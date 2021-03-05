@@ -54,7 +54,7 @@ class Dice {
         return 1;
     }
     
-    // determina el jugador (su índice) queiniciará la partida
+    // determina el jugador (su índice) que iniciará la partida
     public int whoStarts(int nPlayers){
         return generator.nextInt(nPlayers);
     }
