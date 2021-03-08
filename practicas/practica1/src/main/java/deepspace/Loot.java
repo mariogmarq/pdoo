@@ -17,6 +17,14 @@ class Loot {
     private int nHangars;
     private int nMedals;
 
+    /**
+     * Construye un Loot con los siguientes parametros
+     * @param nSupplies numero de supplies que tiene el loot
+     * @param nWeapons numero de armas que contiene
+     * @param nShields numero de escudos que contiene
+     * @param nHangars numero de hangares que contiene
+     * @param nMedals numero de medallas que contiene
+     */
     Loot(int nSupplies, int nWeapons, int nShields, int nHangars, int nMedals) {
         this.nSupplies = nSupplies;
         this.nWeapons = nWeapons;
@@ -24,23 +32,37 @@ class Loot {
         this.nHangars = nHangars;
         this.nMedals = nMedals;
     }
-
+    
+    /**
+     * @return el numero de supplies que contiene el loot
+     */
     public int getNSupplies(){
         return nSupplies;
     }
-    
+    /**
+     * @return el numero de armas que contiene el loot
+     */
     public int getNWeapons() {
         return nWeapons;
     }
     
+    /**
+     * @return el numero de escudos que contiene el loot
+     */
     public int getNShields(){
         return nShields;
     }
     
+    /**
+     * @return el numero de hangares que contiene el loot
+     */
     public int getNHangars() {
         return nHangars;
     }
     
+    /**
+     * @return el numero de medallas que contiene el loot
+     */
     public int getNMedals(){
         return nMedals;
     }

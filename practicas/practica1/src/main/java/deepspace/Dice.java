@@ -25,7 +25,10 @@ class Dice {
         FIRSTSHOTPROB=0.5f;
     }
     
-    // Este método determina el número de hangares que recibirá una estación espacial al ser creada
+    /**
+        Este método determina el número de hangares que recibirá una estación espacial al ser creada
+        @return 0 con probabilidad o 1 en otro caso
+    */
     public int initWithNHangars() {
         if(generator.nextFloat() < NHANGARSPROB){
             return 0;
@@ -33,7 +36,10 @@ class Dice {
         return 1;
     }
     
-    // determina elnúmero de armas que recibirá una estación espacial al ser creada
+    /**
+     determina el número de armas que recibirá una estación espacial al ser creada
+     @return 1, 2 o 3
+     */
     public int initWithNWeapons(){
         float guess = generator.nextFloat();
         if(guess < NWEAPONSPROB){
@@ -45,7 +51,10 @@ class Dice {
         }
     }
     
-    // determina el número de potenciadores de escudo que recibirá una estación espacial alser creada
+    /**
+     * determina el número de potenciadores de escudo que recibirá una estación espacial alser creada
+     * @return 0 o 1
+     * */
     public int initWithNShields() {
         if(generator.nextFloat() < NSHIELDSPROB){
             return 0;
@@ -54,12 +63,19 @@ class Dice {
         return 1;
     }
     
-    // determina el jugador (su índice) que iniciará la partida
+    /**
+     * determina el jugador (su índice) que iniciará la partida
+     * @return numero en rango [0,nplayers-1]
+     */
     public int whoStarts(int nPlayers){
         return generator.nextInt(nPlayers);
     }
     
-    // Este método determina quién (de los dos tipos de personajes deljuego) dispara primero en un combate
+    /**
+     * Este método determina quién (de los dos tipos de personajes deljuego) dispara primero en un combate
+     * @return GameCharacter.SPACESTATION o GameCharacter.ENEMYSTARSHIP
+     * @see GameCharacter
+     */
     public GameCharacter firstShot(){
         if(generator.nextFloat()<FIRSTSHOTPROB){
             return GameCharacter.SPACESTATION;
@@ -68,7 +84,10 @@ class Dice {
         }
     }
     
-    // determina si la estaciónespacial se moverá para esquivar un disparo
+    /**
+     * determina si la estaciónespacial se moverá para esquivar un disparo
+     * @return un booleano
+     */
     public boolean spaceStationMoves(float speed) {
         return (generator.nextFloat() < speed);
     }

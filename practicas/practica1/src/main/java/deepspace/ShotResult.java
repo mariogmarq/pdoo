@@ -6,8 +6,7 @@
 package deepspace;
 
 /**
- *
- * @author mario
+ * Resultados de un disparo
  */
 public enum ShotResult {
     DONOTRESIST, RESIST;

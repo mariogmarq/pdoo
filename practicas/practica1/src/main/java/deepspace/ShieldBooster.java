@@ -13,26 +13,46 @@ class ShieldBooster {
     private float boost;
     private int uses;
 
+    /**
+     * constructor de la clase
+     * @param name nombre del potenciador
+     * @param boost potencia del potenciador
+     * @param uses usos del potenciador
+     */
     ShieldBooster(String name, float boost, int uses) {
         this.name = name;
         this.boost = boost;
         this.uses = uses;
     }
-
+    
+    /**
+     * Constructor copia
+     * @param s instancia de clase ShieldBooster a ser copiada
+     */
     ShieldBooster(ShieldBooster s) {
         this.name = s.name;
         this.boost = s.boost;
         this.uses = s.uses;
     }
     
+    /**
+     * @return potencia del potenciador
+     */
     public float getBoost() {
         return boost;
     }
     
+    /**
+     * @return cantidad de usos restantes
+     */
     public int getUses() {
         return uses;
     }
     
+    /**
+     * usa el potenciador disminuyendo el numero de usos
+     * @return el valor del potenciador o 1 en caso de que no queden usos
+     */
     public float useIt(){
         if(uses > 0){
             uses--;

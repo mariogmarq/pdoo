@@ -6,7 +6,7 @@
 package deepspace;
 
 /**
- * @brief representa  todos los resultados posibles de un combate entre una estación espacialy una nave enemiga
+ * representa  todos los resultados posibles de un combate entre una estación espacialy una nave enemiga
  */
 public enum CombatResult {
     ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS;
