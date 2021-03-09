@@ -10,7 +10,7 @@ module Deepspace
       @uses = uses
     end
 
-    def self.newCopy(orig)
+    def self.class.newCopy(orig)
       ShieldBooster.new(orig.name, orig.boost, orig.uses)
     end
 
