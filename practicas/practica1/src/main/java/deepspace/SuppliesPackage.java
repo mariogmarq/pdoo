@@ -30,9 +30,7 @@ public class SuppliesPackage {
      * @param s instancia de la clase SuppliesPackage a ser copiada
      */
     SuppliesPackage(SuppliesPackage s){
-        this.ammoPower = s.ammoPower;
-        this.fuelUnits = s.fuelUnits;
-        this.shieldPower = s.shieldPower;
+        this (s.getAmmoPower(), s.getFuelUnits(), s.getShieldPower());
     }
    
     /**

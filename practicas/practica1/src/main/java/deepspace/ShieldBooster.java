@@ -30,9 +30,7 @@ class ShieldBooster {
      * @param s instancia de clase ShieldBooster a ser copiada
      */
     ShieldBooster(ShieldBooster s) {
-        this.name = s.name;
-        this.boost = s.boost;
-        this.uses = s.uses;
+        this (s.name, s.getBoost(), s.getUses());
     }
     
     /**

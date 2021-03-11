@@ -31,9 +31,7 @@ public class Weapon {
      * @param w instancia a copiar
      */
     Weapon(Weapon w) {
-        this.name = w.name;
-        this.type = w.type;
-        this.uses = w.uses;
+        this (w.name, w.getType(), w.getUses());
     }
     
     /**
