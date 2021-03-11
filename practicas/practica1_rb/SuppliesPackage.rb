@@ -10,7 +10,7 @@ module Deepspace
       @shieldPower = shieldPower
     end
 
-    def self.class.newCopy(ins)
+    def self.newCopy(ins)
       SuppliesPackage.new(ins.ammoPower, ins.fuelUnits, ins.shieldPower)
     end
 

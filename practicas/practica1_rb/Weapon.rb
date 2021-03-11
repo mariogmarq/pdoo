@@ -10,7 +10,7 @@ module Deepspace
       @uses = uses
     end
 
-    def self.class.newCopy(orig)
+    def self.newCopy(orig)
       Weapon.new(orig.name, orig.type, orig.uses)
     end
 
