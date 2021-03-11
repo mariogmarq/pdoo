@@ -1,6 +1,4 @@
 #encoding: utf-8
-
-require "Random"
 require_relative "GameCharacter"
 
 module Deepspace
@@ -8,7 +6,7 @@ module Deepspace
   class Dice
     
     def initialize
-      @NHANGARPROB = 0.25
+      @NHANGARSPROB = 0.25
       @NSHIELDSPROB = 0.25
       @NWEAPONSPROB = 0.33
       @FIRSTSHOTPROB = 0.5
@@ -16,7 +14,7 @@ module Deepspace
     end
 
     def initWithNHangars
-      if @generator.rand(1.0) < @NHANGARPROB
+      if @generator.rand 1.0 < @NHANGARSPROB
         return 0
       else 
         return 1
@@ -25,9 +23,9 @@ module Deepspace
 
     def initWithNWeapons
       guess = @generator.rand(1.0)
-      if guess < @NSHIELDSPROB
+      if guess < @NWEAPONSPROB
         return 1
-      elsif guess < 2 * @NSHIELDSPROB
+      elsif guess < 2 * @NWEAPONSPROB
         return 2
       else
         return 3
@@ -55,7 +53,7 @@ module Deepspace
     end
 
     def spaceStationMoves(speed)
-      @generator(1.0) < speed
+      @generator.rand 1.0 < speed
     end
 
   end
