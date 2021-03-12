@@ -48,7 +48,7 @@ module Deepspace
       else
         return 1.0
       end
-    endpower
+    end
 
   end
 
