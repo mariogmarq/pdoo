@@ -19,7 +19,18 @@ module Deepspace
       def power
         @power
       end
+
+      def to_s
+        if @power == LASER.power
+          return "LASER"
+        elsif @power == MISSILE.power
+          return "MISSILE"
+        else
+          return "PLASMA"
+        end
+      end
     end
+
 
     LASER = Type.new 2.0
     MISSILE = Type.new 3.0

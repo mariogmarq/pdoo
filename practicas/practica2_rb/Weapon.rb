@@ -2,6 +2,7 @@
 
 #Clase que representa las armas de las que puede disponer una estación espacial para potenciar su energía al disparar
 
+
 module Deepspace
 
   class Weapon
@@ -48,6 +49,10 @@ module Deepspace
       else
         return 1.0
       end
+    end
+
+    def to_s
+      return "Name: " + @name.to_s + "\nType: " + @type.to_s + "\nUses: " + @uses.to_s
     end
 
   end

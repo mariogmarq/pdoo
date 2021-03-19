@@ -43,6 +43,10 @@ module Deepspace
         return 1.0
       end
     end
+
+    def to_s
+      return "Name:  "+ @name.to_s + "\nBoost: " + @boost.to_s + "\nUses: " + @uses.to_s
+    end
     
   end
 

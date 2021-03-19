@@ -40,6 +40,10 @@ module Deepspace
       @nMedals
     end
 
+    def to_s
+      return "nSupplies: " + @nSupplies.to_s + "\nnWeapons: " + @nWeapons.to_s + "\nnShields: " + @nShields.to_s + "\nnHangars: " + @nHangars.to_s + "\nnMedals: " + @nMedals.to_s
+    end
+
   end
 
 

@@ -33,6 +33,10 @@ module Deepspace
       @shieldPower
     end
 
+    def to_s
+      return "ammoPower: " + @ammoPower.to_s + "\nfuelUnits: " + @fuelUnits + "\nshieldPower: " + @shieldPower
+    end
+
   end
 
 end
