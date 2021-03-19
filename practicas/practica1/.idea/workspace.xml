@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e65ed5f-a9a0-4ed2-8d97-28ec54b71953" name="Default Changelist" comment="" />
+    <list default="true" id="5e65ed5f-a9a0-4ed2-8d97-28ec54b71953" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +14,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="xu82c3w3" />
   </component>
   <component name="ProjectId" id="1pT5OvwJMxpzojMhxYremzxtGVv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -40,17 +45,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.main" />
@@ -66,6 +60,8 @@
       <option name="presentableId" value="Default" />
       <updated>1615194211288</updated>
       <workItem from="1615194212389" duration="212000" />
+      <workItem from="1615661450826" duration="116000" />
+      <workItem from="1615674452363" duration="72000" />
     </task>
     <servers />
   </component>
