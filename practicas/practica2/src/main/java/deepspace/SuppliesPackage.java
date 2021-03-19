@@ -53,4 +53,11 @@ public class SuppliesPackage {
     public float getShieldPower(){
         return shieldPower;
     }
+
+    @Override
+    public String toString() {
+        return "ammoPower: " + ammoPower + "\nfuelUnits: " + fuelUnits + "\nshieldPower: " + shieldPower;
+    }
+    
+    
 }

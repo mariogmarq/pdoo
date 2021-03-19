@@ -59,4 +59,15 @@ class ShieldBooster {
         
         return 1.0f;
     }
+    
+    public ShieldToUI getUIversion() {
+        return new ShieldToUI(this);
+    }
+
+    @Override
+    public String toString() {
+        return "name: " + name + "\nboost: " + boost + "\nuses: " + uses;
+    }
+    
+    
 }

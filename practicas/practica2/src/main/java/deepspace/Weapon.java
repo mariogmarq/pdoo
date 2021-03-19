@@ -68,4 +68,15 @@ public class Weapon {
         
         return 1.0f;
     }
+    
+    public WeaponToUI getUIversion() {
+        return new WeaponToUI(this);
+    }
+
+    @Override
+    public String toString() {
+        return "name: " + name + "\ntype: " + type.toString() + "\nuses: " + uses;
+    }
+    
+    
 }

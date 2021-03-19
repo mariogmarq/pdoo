@@ -66,4 +66,16 @@ class Loot {
     public int getNMedals(){
         return nMedals;
     }
+    
+    public LootToUI getUIversion() {
+        return new LootToUI(this);
+    }
+
+    @Override
+    public String toString() {
+        return "nSupplies: " + nSupplies + "\nnWeapons: " + nWeapons + "\nnShields: " + nShields
+                + "\nnHangars: " + nHangars;
+    }
+    
+    
 }

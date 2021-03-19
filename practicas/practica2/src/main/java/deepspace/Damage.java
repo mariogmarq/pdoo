@@ -28,7 +28,7 @@ public class Damage {
     }
     
     Damage(Damage d) {
-        this(d.weapons, d.nShields);
+        this(d.getNWeapons(), d.getNShields());
     }
     
     DamageToUI getUIversion() {

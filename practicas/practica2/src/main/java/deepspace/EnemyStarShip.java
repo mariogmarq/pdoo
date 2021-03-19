@@ -68,6 +68,12 @@ public class EnemyStarShip {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + "\nammoPower: " + ammoPower + "\nShieldPower: " + shieldPower + "\nLoot: " + loot.toString()
+                + "\nDamage: " + damage.toString();
+    }
     
     
     
