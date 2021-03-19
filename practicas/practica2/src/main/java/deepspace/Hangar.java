@@ -114,7 +114,7 @@ public class Hangar {
 
     @Override
     public String toString() {
-        return "maxElements: " + maxElements + " weapons: " + weapons.toString() + " shieldBoosters: " + shieldBoosters.toString();
+        return "maxElements: " + getMaxElements() + "\nweapons: " + getWeapons().toString() + "\nshieldBoosters: " + getShieldBoosters().toString();
     }
     
     

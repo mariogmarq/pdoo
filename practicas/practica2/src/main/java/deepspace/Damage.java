@@ -110,5 +110,12 @@ public class Damage {
     public int getNShields() {
         return nShields;
     }
+
+    @Override
+    public String toString() {
+        return "nShields: " + getNShields()+ "\nnWeapons: " + getNWeapons() + "\nWeapons: " + getWeapons().toString();
+    }
+    
+    
     
 }
