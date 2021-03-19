@@ -24,9 +24,13 @@ public class EnemyStarShip {
     }
 
     EnemyStarShip(EnemyStarShip e) {
-        //Por hacer
+        this(e.getName(), e.getAmmoPower(), e.getShieldPower(), e.getLoot(), e.getDamage());
     }
-
+    
+    public float fire() {
+        return ammoPower;
+    }
+    
     public float getAmmoPower() {
         return ammoPower;
     }
@@ -38,9 +42,31 @@ public class EnemyStarShip {
     public float getShieldPower() {
         return shieldPower;
     }
+    
+    public float protection() {
+        return shieldPower;
+    }
+    
+    /**
+     * @param shot potencia del disparo
+     * @return el resultado del disparo recibido, si el nivel de la protección de los escudos es menor que la intensidad del disparo,
+     * la nave enemiga no resiste (DONOTRESIST).  En casocontrario resiste el disparo (RESIST).
+     * 
+     */
+    public ShotResult recieveShot(float shot) {
+        if(shot > getShieldPower()){
+            return ShotResult.DONOTRESIST;
+        }
+        
+        return ShotResult.RESIST;
+    }
 
     public Loot getLoot() {
         return new Loot(loot.getNSupplies(), loot.getNWeapons(), loot.getNShields(), loot.getNHangars(), loot.getNMedals());
+    }
+
+    public String getName() {
+        return name;
     }
     
     
