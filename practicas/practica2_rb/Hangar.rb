@@ -37,7 +37,7 @@ module Deepspace
         end
 
         
-        private def spaceAvailable
+        def spaceAvailable
             if getWeapons.length + getShieldBoosters.length < @maxElements
                 return true
             else
