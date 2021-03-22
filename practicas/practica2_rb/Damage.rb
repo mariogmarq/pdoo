@@ -1,5 +1,6 @@
 #encoding: utf-8
 
+
 #Clase que representa el daño producido a una estación espacial por una nave enemiga cuando se pierde un combate
 
 #COMPLETAR
@@ -24,7 +25,11 @@ module Deepspace
 
         #Constructor de copia
         def self.newCopy(d)
-            
+            if(d.weapons!=nil)
+                newd = Damage.newSpecificWeapons(d.weapons, d.nShields)
+            else
+                newd = Damage.newNumericWeapons(d.nWeapons, d.nShields)
+            end
         end
 
         #Consultores
@@ -37,7 +42,7 @@ module Deepspace
             @weapons.clone
         end
 
-        #Arreglarlo porque tiene que borrar todos los elementos del vector iguales a ese tipo, y con index solo borras el primero
+        #Alternativa 1 (solo borra el primero)
         def discardWeapon(w)
             indice = weapons.index(w.type)
             if indice != nil
@@ -51,6 +56,19 @@ module Deepspace
             end
         end
 
+        #Alternativa 2 (borra todos)
+        def discardWeapon(w)
+            if weapons != nil
+                @weapons.delete_if {|element| element == w.type}
+            else
+                if nWeapons > 0
+                    @nWeapons -= 1
+                else
+                    @nWeapons = 0
+                end
+            end
+        end
+
         def discardShieldBooster
             if nShields > 0
                 @nShields-=1
@@ -60,11 +78,24 @@ module Deepspace
         end
 
         def hasNoEffect
+            if weapons != nil
+                if !weapons.empty
+                    return false
+                end
+            else
+                if nWeapons > 0
+                    return false
+                end
+            end
+            if nShields > 0
+                return false
+            end
+            return true
         end
 
         private def arrayContainsType(w,t)
             indice = w.index(t)
-            if(indice != nill)
+            if(indice != nil)
                 return indice
             else
                 return -1
