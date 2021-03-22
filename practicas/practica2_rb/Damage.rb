@@ -30,6 +30,7 @@ module Deepspace
             else
                 newd = Damage.newNumericWeapons(d.nWeapons, d.nShields)
             end
+            return newd
         end
 
         #Consultores
