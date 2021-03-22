@@ -18,13 +18,13 @@ public class Damage {
     Damage(int s, int w) {
         this.nShields = s;
         this.nWeapons = w;
-        weapons = new ArrayList<>();
+        weapons = null;
     }
     
     Damage(ArrayList<WeaponType> wl, int s) {
         this.weapons = new ArrayList<>(wl);
         this.nShields = s;
-        this.nWeapons = weapons.size();
+        this.nWeapons = 0;
     }
     
     Damage(Damage d) {
@@ -70,19 +70,20 @@ public class Damage {
      * @param w el arma
      */
     public void discardWeapon(Weapon w) {
-        int index = weapons.indexOf(w.getType());
-        if(index == -1) {
-            nWeapons--;
-            if(nWeapons < 0) {
-                nWeapons = 0;
+        if(weapons == null){
+            if(nWeapons > 0){
+                nWeapons--;
             }
         } else {
-            weapons.remove(index);
+            int index = weapons.indexOf(w.getType());
+            if(index != -1){
+                weapons.remove(index);
+            }
         }
     }
     
     /**
-     * Descarte un shieldBooster
+     * Descarta un shieldBooster
      */
     public void discardShieldBooster() {
         nShields--;
@@ -96,10 +97,17 @@ public class Damage {
      * Esto quiere decir que no implica la pérdida de ningún tipo de accesorio (armas o potenciadores de escudo).
      */
     public boolean hasNoEffect() {
-        return (nWeapons == 0 && nShields == 0);
+        if(weapons == null) {
+            return (nWeapons == 0 && nShields == 0);
+        }
+        
+        return (weapons.size() == 0 && nShields == 0);
     }
 
     public ArrayList<WeaponType> getWeapons() {
+        if(weapons==null){
+            return null;
+        }
         return new ArrayList<>(weapons);
     }
 
@@ -113,7 +121,10 @@ public class Damage {
 
     @Override
     public String toString() {
-        return "nShields: " + getNShields()+ "\nnWeapons: " + getNWeapons() + "\nWeapons: " + getWeapons().toString();
+        if(weapons == null) {
+            return "nShields: " + getNShields()+ "\nnWeapons: " + getNWeapons();
+        }
+        return "nShields: " + getNShields() + "\nWeapons: " + getWeapons().toString();
     }
     
     
