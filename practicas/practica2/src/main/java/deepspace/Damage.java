@@ -65,7 +65,7 @@ public class Damage {
     
     /**
      * intenta eliminar el tipo del arma pasada como parámetro de esa lista.
-     * En otro caso simplementedecrementa en una unidad el contador de armas que deben ser eliminadas.
+     * En otro caso simplemente decrementa en una unidad el contador de armas que deben ser eliminadas.
      * Ese contador no puedeser inferior a cero en ningún caso
      * @param w el arma
      */
@@ -92,7 +92,7 @@ public class Damage {
     }
     
     /**
-     * @return rue si el daño representado no tiene ningún efecto.
+     * @return true si el daño representado no tiene ningún efecto.
      * Esto quiere decir que no implica la pérdida de ningún tipo de accesorio (armas o potenciadores de escudo).
      */
     public boolean hasNoEffect() {
