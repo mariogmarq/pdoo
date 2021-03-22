@@ -12,33 +12,32 @@ module Deepspace
         end
 
         #Consultores
-        def getMaxElements
-            @maxElements
+
+        attr_reader :maxElements
+
+        def weapons
+            @weapons.clone
         end
 
-        def getWeapons
-            @weapons
-        end
-
-        def getShieldBoosters
-            @shieldBoosters
+        def shieldBoosters
+            @shieldBoosters.clone
         end
 
         #Constructor de copia de la clase
         def self.newCopy(h)
             newh = Hangar.new(h.maxElements)
-            h.getWeapons.each do |element|
+            h.weapons.each do |element|
                 newh.addWeapon(element)
             end
-            h.getShieldBoosters.each do |element|
+            h.shieldBoosters.each do |element|
                 newh.addShieldBooster(element)
             end
             return newh
         end
 
-        
+        #Metodos
         def spaceAvailable
-            if getWeapons.length + getShieldBoosters.length < @maxElements
+            if weapons.length + shieldBoosters.length < maxElements
                 return true
             else
                 return false
@@ -47,7 +46,7 @@ module Deepspace
 
         def addWeapon(w)
             if spaceAvailable
-                getWeapons.push(w)
+                @weapons.push(w)
                 return true
             else
                 return false
@@ -56,7 +55,7 @@ module Deepspace
 
         def addShieldBooster(s)
             if spaceAvailable
-                getShieldBoosters.push(s)
+                @shieldBoosters.push(s)
                 return true
             else
                 return false
@@ -64,9 +63,9 @@ module Deepspace
         end
         
         def removeWeapon(w)
-            if w>=0 && w<getWeapons.length
-                aux = getWeapons[w]
-                .delete_at(w)
+            if w>=0 && w<weapons.length
+                aux = weapons[w]
+                @weapons.delete_at(w)
                 return aux
             else
                 return nil
@@ -74,9 +73,9 @@ module Deepspace
         end
 
         def removeShieldBooster(s)
-            if s>=0 && s<getShieldBoosters.length
-                aux = getShieldBoosters[s]
-                getShieldBoosters.delete_at(s)
+            if s>=0 && s<shieldBoosters.length
+                aux = shieldBoosters[s]
+                @shieldBoosters.delete_at(s)
                 return aux
             else
                 return nil

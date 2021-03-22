@@ -22,41 +22,40 @@ module Deepspace
             new(nil,s,w)
         end
 
+        #Constructor de copia
         def self.newCopy(d)
             
         end
 
-        def getNShields
-            @nShields
-        end
+        #Consultores
+        
+        attr_reader :nShields
 
-        def getNWeapons
-            @nWeapons
-        end
+        attr_reader :nWeapons
 
-        def getWeapons
-            @weapons
+        def weapons
+            @weapons.clone
         end
 
         #Arreglarlo porque tiene que borrar todos los elementos del vector iguales a ese tipo, y con index solo borras el primero
         def discardWeapon(w)
-            indice = getWeapons.index(w.type)
+            indice = weapons.index(w.type)
             if indice != nil
-                getWeapons.delete_at(indice)
+                @weapons.delete_at(indice)
             else
-                if getNWeapons>0
-                    getNWeapons-=1
+                if nWeapons>0
+                    @nWeapons-=1
                 else
-                    getNWeapons=0
+                    @nWeapons=0
                 end
             end
         end
 
         def discardShieldBooster
-            if getNShields > 0
-                getNShields-=1
+            if nShields > 0
+                @nShields-=1
             else
-                getNShields = 0
+                @nShields = 0
             end
         end
 
