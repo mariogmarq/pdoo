@@ -46,8 +46,9 @@ public class SpaceStation {
     public int getNMedals(){return nMedals;}
     public float getShieldPower(){return shieldPower;}
     public Damage getPendingDamage(){return new Damage(pendingDamage);}
-    public ArrayList<Weapon>getWeapons(){return new ArrayList<Weapon>(weapons);}
-    public ArrayList<ShieldBooster>getShieldBoosters(){return new ArrayList<ShieldBooster>(shieldBoosters);}
+    public ArrayList<Weapon> getWeapons(){return new ArrayList<Weapon>(weapons);}
+    public ArrayList<ShieldBooster> getShieldBoosters(){return new ArrayList<ShieldBooster>(shieldBoosters);}
+    public Hangar getHangar(){return new Hangar(hangar);}
     
     
     private void assignFuelValue(float f){
@@ -93,10 +94,76 @@ public class SpaceStation {
         pendingDamage.adjust(weapons, shieldBoosters);
     }
     
+    public void mountWeapon(int i){
+        if (hangar!=null){
+            Weapon aux = hangar.removeWeapon(i);
+            if (aux!=null)
+                weapons.add(aux);
+        }
+    }
+    
     public void mountShieldBooster(int i){
-        
+        if (hangar!=null){
+            ShieldBooster aux = hangar.removeShieldBooster(i);
+            if (aux!=null)
+                shieldBoosters.add(aux);
+        }
+    }
+    
+    //Hangar no tiene metodo discard
+    public void discardWeaponInHangar(int i){
+        throw new UnsupportedOperationException();
+    }
+    
+    public void discardShieldBoosterInHangar(int i){
+        throw new UnsupportedOperationException();
     }
     
     
+    public float getSpeed(){
+        return getFuelUnits()/MAXFUEL;
+    }
     
+    public void move(){
+        fuelUnits -= getSpeed();
+        if (getFuelUnits() < 0)
+            fuelUnits = 0;        
+    }
+    
+    public boolean validState(){
+        if(pendingDamage.getNShields()> 0 || pendingDamage.getNWeapons() > 0 || !pendingDamage.getWeapons().isEmpty() || !pendingDamage.hasNoEffect())
+            return false;
+        else
+            return true;
+    }
+    
+    public void cleanUpMountedItems(){
+        weapons.removeIf(n -> n.getUses()==0);
+        shieldBoosters.removeIf(n -> n.getUses()==0);
+    }
+    
+    
+    public float fire(){
+        throw new UnsupportedOperationException();
+    }
+    
+    public float protection(){
+        throw new UnsupportedOperationException();
+    }
+    
+    public ShotResult receiveShot(float shot){
+        throw new UnsupportedOperationException();
+    }
+    
+    public void setLoot(Loot loot){
+        throw new UnsupportedOperationException();
+    }
+    
+    public void discardWeapon(int i){
+        throw new UnsupportedOperationException();
+    }
+    
+    public void discardShieldBooster(int i){
+        throw new UnsupportedOperationException();
+    }
 }
