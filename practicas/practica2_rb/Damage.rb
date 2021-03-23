@@ -39,6 +39,7 @@ module Deepspace
 
         attr_reader :nWeapons
 
+	#Preguntar si deberia ser creando un array de newcopys de Weapon
         def weapons
             @weapons.clone
         end

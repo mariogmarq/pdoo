@@ -27,11 +27,11 @@ module Deepspace
         attr_reader :shieldPower
 
         def loot
-            @loot.clone
+            Loot.newCopy(@loot)
         end
 
         def damage
-            @damage.clone
+            Damage.newCopy(@damage)
         end
 
         def protection

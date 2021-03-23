@@ -15,6 +15,7 @@ module Deepspace
 
         attr_reader :maxElements
 
+	#Preguntar si deberia ser creando un array de NewCopys
         def weapons
             @weapons.clone
         end
