@@ -50,6 +50,10 @@ module Deepspace
             end
         end
 
+        def getUIversion()
+            EnemyToUI.new(this)
+        end
+
 
     end
 end

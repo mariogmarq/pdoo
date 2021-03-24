@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class SpaceStation {
     
-    static final int MAXFUEL = 100;
-    static final float SHIELDLOSSPERUNITSHOT = 0.1f;
+    private static final int MAXFUEL = 100;
+    private static final float SHIELDLOSSPERUNITSHOT = 0.1f;
     
     private float ammoPower;
     private float fuelUnits;
@@ -110,13 +110,13 @@ public class SpaceStation {
         }
     }
     
-    //Hangar no tiene metodo discard
+    
     public void discardWeaponInHangar(int i){
-        throw new UnsupportedOperationException();
+        hangar.removeWeapon(i);
     }
     
     public void discardShieldBoosterInHangar(int i){
-        throw new UnsupportedOperationException();
+        hangar.removeShieldBooster(i);
     }
     
     
@@ -165,5 +165,9 @@ public class SpaceStation {
     
     public void discardShieldBooster(int i){
         throw new UnsupportedOperationException();
+    }
+    
+    public SpaceStationToUI getUIversion(){
+        return new SpaceStationToUI(this);
     }
 }

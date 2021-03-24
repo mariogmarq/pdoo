@@ -82,5 +82,9 @@ module Deepspace
                 return nil
             end
         end
+
+        def getUIversion
+            HangarToUI.new(this)
+        end
     end
 end

@@ -108,6 +108,10 @@ module Deepspace
 
         end
 
+        def getUIversion
+            DamageToUI.new(this)
+        end
+
 
     end
 end

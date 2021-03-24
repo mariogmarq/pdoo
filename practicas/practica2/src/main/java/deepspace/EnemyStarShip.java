@@ -75,6 +75,10 @@ public class EnemyStarShip {
                 + "\nDamage: " + damage.toString();
     }
     
+    EnemyToUI getUIversion(){
+        return new EnemyToUI(this);
+    }
+    
     
     
 }
