@@ -25,14 +25,8 @@ module Deepspace
         attr_reader :name
         attr_reader :ammoPower
         attr_reader :shieldPower
-
-        def loot
-            Loot.newCopy(@loot)
-        end
-
-        def damage
-            Damage.newCopy(@damage)
-        end
+        attr_reader :loot
+        attr_reader :damage
 
         def protection
             @shieldPower

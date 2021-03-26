@@ -9,6 +9,8 @@ module Deepspace
 
     class Damage
 
+        NO_USE = -1
+
         def initialize(nw,s, w)
             @nWeapons = nw
             @nShields = s 
@@ -20,7 +22,7 @@ module Deepspace
         end
 
         def self.newSpecificWeapons(w,s)
-            new(-1,s,w) #Poner constante NO_USE
+            new(NO_USE,s,w)
         end
 
         #Constructor de copia
@@ -39,10 +41,7 @@ module Deepspace
 
         attr_reader :nWeapons
 
-	#Preguntar si deberia ser creando un array de newcopys de Weapon
-        def weapons
-            @weapons.clone
-        end
+        attr_reader :weapons
 
         #Alternativa 1 (solo borra el primero)
         def discardWeapon(w)
@@ -104,9 +103,28 @@ module Deepspace
             end
         end
 
+        #Hacer la parte de ajustar las armas
         def adjust(w,s)
+            if(weapons==nil)
+                aux = Damage.newNumericWeapons(nWeapons, nShields)
+            else
+                aux = Damage.newSpecificWeapons(weapons, nShields)
+            end
+
+            var=0
+            limit_shields = [s.length,aux.nShields].min
+            while var < limit_shields
+                aux.discardShieldBooster
+                var+=1
+            end
+
+
+            
+            
+            return aux
 
         end
+
 
         def getUIversion
             DamageToUI.new(this)

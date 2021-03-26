@@ -14,15 +14,8 @@ module Deepspace
         #Consultores
 
         attr_reader :maxElements
-
-	#Preguntar si deberia ser creando un array de NewCopys
-        def weapons
-            @weapons.clone
-        end
-
-        def shieldBoosters
-            @shieldBoosters.clone
-        end
+        attr_reader :weapons
+        attr_reader :shieldBoosters
 
         #Constructor de copia de la clase
         def self.newCopy(h)
