@@ -8,7 +8,7 @@ package deepspace;
 /**
  * representa a los potenciadores de escudo que pueden tener las estaciones espaciales.
  */
-class ShieldBooster {
+public class ShieldBooster {
     private String name;
     private float boost;
     private int uses;

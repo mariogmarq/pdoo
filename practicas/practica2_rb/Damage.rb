@@ -20,7 +20,7 @@ module Deepspace
         end
 
         def self.newSpecificWeapons(w,s)
-            new(nil,s,w)
+            new(-1,s,w) #Poner constante NO_USE
         end
 
         #Constructor de copia

@@ -31,20 +31,14 @@ public class GameUniverse {
         dice = new Dice();
     }
     
-    public int getCurrentStationIndex(){return currentStationIndex;}
-    public int getTurns(){return turns;}
-    public GameStateController getGameState(){return gameState;}    //Preguntar
-    public Dice getDice(){return dice;}
-    public SpaceStation getCurrentStation(){return currentStation;}
-    public ArrayList<SpaceStation> getSpaceStations(){return new ArrayList<SpaceStation>(spaceStations);}
-    public EnemyStarShip getCurrentEnemy(){return new EnemyStarShip(currentEnemy);}
+   
     
     public GameState getState(){
-        return getGameState().getState();
+        return gameState.getState();
     }
     
     public boolean haveAWinner(){
-        return (getCurrentStation().getNMedals()>=WIN);
+        return (currentStation.getNMedals()>=WIN);
     }
     
     public void discardHangar(){
@@ -107,7 +101,7 @@ public class GameUniverse {
     }
     
     public GameUniverseToUI getUIversion(){
-        return new GameUniverseToUI(getCurrentStation(), getCurrentEnemy());
+        return new GameUniverseToUI(currentStation, currentEnemy);
     }
     
     

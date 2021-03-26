@@ -32,11 +32,10 @@ public class SpaceStation {
         ammoPower = supplies.getAmmoPower();
         fuelUnits = supplies.getFuelUnits();
         shieldPower = supplies.getShieldPower();
-        //Comprobar
         nMedals = 0;
         pendingDamage = null;
-        weapons = null;
-        shieldBoosters = null;
+        weapons = new ArrayList<>();
+        shieldBoosters = new ArrayList<>();
         hangar = null;
     }
     
@@ -45,11 +44,14 @@ public class SpaceStation {
     public String getName(){return name;}
     public int getNMedals(){return nMedals;}
     public float getShieldPower(){return shieldPower;}
-    public Damage getPendingDamage(){return new Damage(pendingDamage);}
-    public ArrayList<Weapon> getWeapons(){return new ArrayList<Weapon>(weapons);}
-    public ArrayList<ShieldBooster> getShieldBoosters(){return new ArrayList<ShieldBooster>(shieldBoosters);}
-    public Hangar getHangar(){return new Hangar(hangar);}
+    public Damage getPendingDamage(){return pendingDamage;}
+    public ArrayList<Weapon> getWeapons(){return weapons;}
+    public ArrayList<ShieldBooster> getShieldBoosters(){return shieldBoosters;}
+    public Hangar getHangar(){return hangar;}
     
+    public float getSpeed(){
+        return getFuelUnits()/MAXFUEL;
+    }
     
     private void assignFuelValue(float f){
         if (f<= MAXFUEL)
@@ -57,7 +59,7 @@ public class SpaceStation {
     }
     
     private void cleanPendingDamage(){
-        if (pendingDamage.hasNoEffect())
+        if(pendingDamage!=null && pendingDamage.hasNoEffect())
             pendingDamage = null;
     }
     
@@ -78,7 +80,6 @@ public class SpaceStation {
     public void receiveHangar(Hangar h){
         if(hangar==null)
             hangar = h;
-        
     }
     
     public void discardHangar(){hangar = null;}
@@ -90,8 +91,8 @@ public class SpaceStation {
     }
     
     //Comprobar
-    public void setPendingDamage (Damage s){
-        pendingDamage.adjust(weapons, shieldBoosters);
+    public void setPendingDamage (Damage d){
+        pendingDamage = d.adjust(weapons, shieldBoosters);
     }
     
     public void mountWeapon(int i){
@@ -112,16 +113,13 @@ public class SpaceStation {
     
     
     public void discardWeaponInHangar(int i){
-        hangar.removeWeapon(i);
+        if(hangar!=null)
+            hangar.removeWeapon(i);
     }
     
     public void discardShieldBoosterInHangar(int i){
-        hangar.removeShieldBooster(i);
-    }
-    
-    
-    public float getSpeed(){
-        return getFuelUnits()/MAXFUEL;
+        if(hangar!=null)
+            hangar.removeShieldBooster(i);
     }
     
     public void move(){
@@ -131,8 +129,12 @@ public class SpaceStation {
     }
     
     public boolean validState(){
-        if(pendingDamage.getNShields()> 0 || pendingDamage.getNWeapons() > 0 || !pendingDamage.getWeapons().isEmpty() || !pendingDamage.hasNoEffect())
-            return false;
+        if(pendingDamage!=null){
+            if(pendingDamage.hasNoEffect())
+                return true;
+            else
+                return false;
+        }
         else
             return true;
     }

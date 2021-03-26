@@ -10,7 +10,7 @@ package deepspace;
  * Puede incluir cantidadesque representen un número de paquetes de suministros, armas,
  * potenciadores de escudo, hangares y/o medallas.
  */
-class Loot {
+public class Loot {
     private int nSupplies;
     private int nWeapons;
     private int nShields;
