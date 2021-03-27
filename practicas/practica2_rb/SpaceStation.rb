@@ -21,37 +21,28 @@ module Deepspace
     def getUIversion
       SpaceStationToUI.new self
     end
-
-    def ammoPower
-      @ammoPower
-    end
-
-    def fuelUnits
-      @fuelUnits
-    end
+    
+    attr_reader :fuelUnits
+    attr_reader :ammoPower
+    attr_reader :nMedals
+    attr_reader :name
+    attr_reader :shieldPower
 
     def Hangar
-      @hangar
-    end
-
-    def name
-      @name
-    end
-
-    def nMedals
-      @nMedals
+      if !@hangar.nil?
+        return Hangar.newCopy @hangar
+      end
+      nil
     end
 
     def pendingDamage
-      @pendingDamage
+      return Damage.newCopy @pendingDamage if !pendingDamage.nil?
+
+      nil
     end
 
     def shieldBoosters
-      @shieldBoosters
-    end
-
-    def shieldPower
-      @shieldPower
+      @shieldBoosters.clone
     end
 
     def speed
@@ -59,7 +50,7 @@ module Deepspace
     end
 
     def weapons
-      @weapons
+      @weapons.clone
     end
 
     def fire
@@ -80,52 +71,38 @@ module Deepspace
     end
 
     def discardShieldBoosterInHangar(i)
-      if @hangar != nil
-        @hangar.removeShieldBooster i
-      end
+      @hangar.removeShieldBooster i if !@hangar.nil?
     end
 
     def discardWeaponInHangar(i)
-      if @hangar != nil
-        @hangar.removeWeapon i
-      end
+      @hangar.removeWeapon i if !@hangar.nil?
     end
 
     def mountShieldBooster(i)
-      if @hangar != nil
+      if !@hangar.nil?
         aux = @hangar.removeShieldBooster i
-        if aux != nil
-          @shieldBoosters.push aux
-        end
+        @shieldBoosters.push aux if !aux.nil?
       end
     end
 
     def mountWeapon(i)
-      if @hangar != nil
+      if !@hangar.nil?
         aux = @hangar.removeWeapon i
-        if aux != nil
-          @weapons.push aux
-        end
+        @weapons.push aux if !aux.nil?
       end
     end
 
     def move
       @fuelUnits -= (@fuelUnits * speed).floor
-      if @fuelUnits < 0
-        @fuelUnits = 0
-      end
+      @fuelUnits = 0 if @fuelUnits.negative?
     end
 
     def reciveHangar(h)
-      if @hangar == nil
-        @hangar = Hangar.newCopy h
-      end
+      @hangar = Hangar.newCopy h if @hangar.nil?
     end
 
     def receiveShieldBooster(s)
-      if @hangar == nil
-        return false
-      end
+      return false if @hangar.nil?
 
       @hangar.addShieldBooster(s)
     end
@@ -137,20 +114,18 @@ module Deepspace
     end
 
     def receiveWeapon(w)
-      if @hangar == nil
-        return false
-      end
+      return false if @hangar.nil?
 
       @hangar.addWeapon(w)
     end
 
     def cleanUpMountedItems
-      @weapons.delete_if { |weapon|  weapon.uses == 0}
-      @shieldBoosters.delete_if { |s| s.uses == 0 }
+      @weapons.delete_if { |weapon|  weapon.uses.zero?}
+      @shieldBoosters.delete_if { |s| s.uses.zero? }
     end
 
     def validState
-      @pendingDamage == nil or @pendingDamage.hasNoEffect # Puede petar
+      @pendingDamage.nil? or @pendingDamage.hasNoEffect # Puede petar
     end
 
     def setPendingDamage(d)
@@ -160,16 +135,12 @@ module Deepspace
     private
     def assignFuelValue(f)
       @fuelUnits = f
-      if @fuelUnits > @@MAXFUEL
-        @fuelUnits = @@MAXFUEL
-      end
+      @fuelUnits = @@MAXFUEL if @fuelUnits > @@MAXFUEL
     end
 
     def cleanPendingDamage
-      if @pendingDamage != nil
-        if @pendingDamage.hasNoEffect
-          @pendingDamage = nil
-        end
+      if !@pendingDamage.nil?
+        @pendingDamage = nil if @pendingDamage.hasNoEffect
       end
     end
 
