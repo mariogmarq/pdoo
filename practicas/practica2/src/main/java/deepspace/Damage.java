@@ -6,11 +6,13 @@
 package deepspace;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Representa el daño producido a una estación espacial por una naveenemiga cuando se pierde un combate
  */
 public class Damage {
+    private final static int NOUSED = -1;
     private int nShields;
     private int nWeapons;
     private ArrayList<WeaponType> weapons;
@@ -24,7 +26,7 @@ public class Damage {
     Damage(ArrayList<WeaponType> wl, int s) {
         this.weapons = new ArrayList<>(wl);
         this.nShields = s;
-        this.nWeapons = 0;
+        this.nWeapons = NOUSED;
     }
     
     Damage(Damage d) {
@@ -57,10 +59,56 @@ public class Damage {
      * @param w armas
      * @param s potenciadores
      * @return version ajustada del objeto
-     * @deprecated no implementado
      */
     public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
-        throw new UnsupportedOperationException();
+        int shields = Integer.min(s.size(), nShields);
+        if(weapons == null){
+            //Caso tenemos contadores
+            return new Damage(Integer.min(nWeapons, w.size()), shields);
+        }
+        
+        //Caso weapons es una lista, creamos una copia de weapons
+        ArrayList<WeaponType> copy = new ArrayList<>(weapons);
+        
+        //Borramos los tipos que no estan en w
+        int i = 0;
+        while(i < copy.size()) {
+            if(arrayContainsType(w, copy.get(i)) == -1) {
+                copy.remove(i);
+            } else {
+                i++;
+            }
+        }
+        
+        //Nos aseguramos de que haya suficientes tipos de cada clase
+        //Para ello usaremos un map y contaremos los distintos tipos de cada clase
+        HashMap<WeaponType, Integer> mapCopy = new HashMap<>();
+        HashMap<WeaponType, Integer> mapW = new HashMap<>();
+        //Inicializamos el map
+        for(WeaponType type: WeaponType.values()){
+            mapCopy.put(type, 0);
+            mapW.put(type, 0);
+        }
+        
+        for (int j = 0; j < copy.size(); j++) {
+            WeaponType get = copy.get(j);
+            mapCopy.put(get, mapCopy.get(get)+1);
+        }
+        
+        for (int j = 0; j < w.size(); j++) {
+            WeaponType get = w.get(j).getType();
+            mapW.put(get, mapW.get(get)+1);
+        }
+        
+        //Limpiamos la lista
+        for(WeaponType type: WeaponType.values()){
+            while(mapCopy.get(type) > mapW.get(type)) {
+                mapCopy.put(type, mapCopy.get(type)-1);
+                weapons.remove(weapons.indexOf(type));
+            }
+        }
+        
+        return new Damage(copy, shields);
     }
     
     /**
@@ -101,7 +149,7 @@ public class Damage {
             return (nWeapons == 0 && nShields == 0);
         }
         
-        return (weapons.size() == 0 && nShields == 0);
+        return (weapons.isEmpty() && nShields == 0);
     }
 
     public ArrayList<WeaponType> getWeapons() {

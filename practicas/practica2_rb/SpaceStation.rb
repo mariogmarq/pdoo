@@ -22,16 +22,10 @@ module Deepspace
       SpaceStationToUI.new self
     end
     
-    attr_reader :fuelUnits
-    attr_reader :ammoPower
-    attr_reader :nMedals
-    attr_reader :name
-    attr_reader :shieldPower
+    attr_reader :fuelUnits, :ammoPower, :nMedals, :name, :shieldPower
 
     def Hangar
-      if !@hangar.nil?
-        return Hangar.newCopy @hangar
-      end
+      return Hangar.newCopy @hangar unless @hangar.nil?
       nil
     end
 
