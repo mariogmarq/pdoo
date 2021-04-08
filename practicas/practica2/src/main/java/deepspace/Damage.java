@@ -67,48 +67,25 @@ public class Damage {
             return new Damage(Integer.min(nWeapons, w.size()), shields);
         }
         
-        //Caso weapons es una lista, creamos una copia de weapons
-        ArrayList<WeaponType> copy = new ArrayList<>(weapons);
+       ArrayList<Weapon> wAux = new ArrayList<>(w);
+       ArrayList<WeaponType> toSet = new ArrayList<>();
+       
+       for(WeaponType element: weapons) {
+          int index = -1;
+          for(int i = 0; i < wAux.size(); i++){
+              if(wAux.get(i).getType() == element){
+                  index = i;
+                  break;
+              }
+          }
+          
+          if(index != -1){
+              toSet.add(element);
+              wAux.remove(index);
+          }
+       }
         
-        //Borramos los tipos que no estan en w
-        int i = 0;
-        while(i < copy.size()) {
-            if(arrayContainsType(w, copy.get(i)) == -1) {
-                copy.remove(i);
-            } else {
-                i++;
-            }
-        }
-        
-        //Nos aseguramos de que haya suficientes tipos de cada clase
-        //Para ello usaremos un map y contaremos los distintos tipos de cada clase
-        HashMap<WeaponType, Integer> mapCopy = new HashMap<>();
-        HashMap<WeaponType, Integer> mapW = new HashMap<>();
-        //Inicializamos el map
-        for(WeaponType type: WeaponType.values()){
-            mapCopy.put(type, 0);
-            mapW.put(type, 0);
-        }
-        
-        for (int j = 0; j < copy.size(); j++) {
-            WeaponType get = copy.get(j);
-            mapCopy.put(get, mapCopy.get(get)+1);
-        }
-        
-        for (int j = 0; j < w.size(); j++) {
-            WeaponType get = w.get(j).getType();
-            mapW.put(get, mapW.get(get)+1);
-        }
-        
-        //Limpiamos la lista
-        for(WeaponType type: WeaponType.values()){
-            while(mapCopy.get(type) > mapW.get(type)) {
-                mapCopy.put(type, mapCopy.get(type)-1);
-                weapons.remove(weapons.indexOf(type));
-            }
-        }
-        
-        return new Damage(copy, shields);
+        return new Damage(toSet, shields);
     }
     
     /**
