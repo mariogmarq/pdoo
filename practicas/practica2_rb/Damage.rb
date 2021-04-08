@@ -3,7 +3,6 @@
 
 #Clase que representa el daño producido a una estación espacial por una nave enemiga cuando se pierde un combate
 
-#COMPLETAR
 
 module Deepspace
 
@@ -103,27 +102,38 @@ module Deepspace
             end
         end
 
-        #Hacer la parte de ajustar las armas
+
+
         def adjust(w,s)
-            if(weapons==nil)
-                aux = Damage.newNumericWeapons(nWeapons, nShields)
+            limit_nshields = [s.length, nShields].min
+
+            if weapons==nil
+                limit_weapons = [w.length, nWeapons].min
+                return Damage.newNumericWeapons(limit_nweapons, limit_nshields)
+
             else
-                aux = Damage.newSpecificWeapons(weapons, nShields)
+                result = []
+                w_aux = w.clone
+                weapons.each do |element|
+                    indice = -1
+                    w_aux.each do |element2|
+                        if element2.type == element
+                            indice = weapons.index(element)
+                            break
+                        end
+                    end
+
+                    if indice != -1
+                        result.push(element)
+                        w_aux.delete_at(indice)
+                    end
+                end
+
+                return Damage.newSpecificWeapons(result, limit_nshields)
+
             end
-
-            var=0
-            limit_shields = [s.length,aux.nShields].min
-            while var < limit_shields
-                aux.discardShieldBooster
-                var+=1
-            end
-
-
-            
-            
-            return aux
-
         end
+
 
 
         def getUIversion
