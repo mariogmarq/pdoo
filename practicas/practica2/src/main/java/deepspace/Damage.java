@@ -6,7 +6,6 @@
 package deepspace;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Representa el daño producido a una estación espacial por una naveenemiga cuando se pierde un combate
@@ -30,7 +29,10 @@ public class Damage {
     }
     
     Damage(Damage d) {
-        this(d.getNWeapons(), d.getNShields());
+        // Repito codigo porque no deja hacer llamadas a constructores independientes
+        this.nShields = d.getNShields();
+        this.nWeapons = d.getNWeapons();
+        this.weapons = d.getWeapons();
     }
     
     DamageToUI getUIversion() {
@@ -71,13 +73,7 @@ public class Damage {
        ArrayList<WeaponType> toSet = new ArrayList<>();
        
        for(WeaponType element: weapons) {
-          int index = -1;
-          for(int i = 0; i < wAux.size(); i++){
-              if(wAux.get(i).getType() == element){
-                  index = i;
-                  break;
-              }
-          }
+           int index = arrayContainsType(w, element);
           
           if(index != -1){
               toSet.add(element);

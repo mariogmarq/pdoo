@@ -45,8 +45,8 @@ public class SpaceStation {
     public int getNMedals(){return nMedals;}
     public float getShieldPower(){return shieldPower;}
     public Damage getPendingDamage(){return pendingDamage;}
-    public ArrayList<Weapon> getWeapons(){return weapons;}
-    public ArrayList<ShieldBooster> getShieldBoosters(){return shieldBoosters;}
+    public ArrayList<Weapon> getWeapons(){return new ArrayList<>(weapons);}
+    public ArrayList<ShieldBooster> getShieldBoosters(){return new ArrayList<>(shieldBoosters);}
     public Hangar getHangar(){return hangar;}
     
     public float getSpeed(){
@@ -54,32 +54,37 @@ public class SpaceStation {
     }
     
     private void assignFuelValue(float f){
-        if (f<= MAXFUEL)
+        if (f<= MAXFUEL) {
             fuelUnits = f;
+        }
     }
     
     private void cleanPendingDamage(){
-        if(pendingDamage!=null && pendingDamage.hasNoEffect())
+        if(pendingDamage!=null && pendingDamage.hasNoEffect()) {
             pendingDamage = null;
+        }
     }
     
     boolean receiveWeapon(Weapon w){
-        if (hangar!=null)
+        if (hangar!=null) {
             return hangar.addWeapon(w);
-        else
+        } else {
             return false;
+        }
     }
     
     public boolean receiveShieldBooster(ShieldBooster s){
-        if(hangar!=null)
+        if(hangar!=null) {
             return hangar.addShieldBooster(s);
-        else
+        } else {
             return false;
+        }
     }
     
     public void receiveHangar(Hangar h){
-        if(hangar==null)
+        if(hangar==null) {
             hangar = h;
+        }
     }
     
     public void discardHangar(){hangar = null;}
@@ -98,45 +103,48 @@ public class SpaceStation {
     public void mountWeapon(int i){
         if (hangar!=null){
             Weapon aux = hangar.removeWeapon(i);
-            if (aux!=null)
+            if (aux!=null) {
                 weapons.add(aux);
+            }
         }
     }
     
     public void mountShieldBooster(int i){
         if (hangar!=null){
             ShieldBooster aux = hangar.removeShieldBooster(i);
-            if (aux!=null)
+            if (aux!=null) {
                 shieldBoosters.add(aux);
+            }
         }
     }
     
     
     public void discardWeaponInHangar(int i){
-        if(hangar!=null)
+        if(hangar!=null) {
             hangar.removeWeapon(i);
+        }
     }
     
     public void discardShieldBoosterInHangar(int i){
-        if(hangar!=null)
+        if(hangar!=null) {
             hangar.removeShieldBooster(i);
+        }
     }
     
     public void move(){
         fuelUnits -= getSpeed();
-        if (getFuelUnits() < 0)
-            fuelUnits = 0;        
+        if (getFuelUnits() < 0) {
+            fuelUnits = 0;
+        }        
     }
     
     public boolean validState(){
         if(pendingDamage!=null){
-            if(pendingDamage.hasNoEffect())
-                return true;
-            else
-                return false;
+            return pendingDamage.hasNoEffect();
         }
-        else
+        else {
             return true;
+        }
     }
     
     public void cleanUpMountedItems(){
