@@ -77,7 +77,7 @@ module Deepspace
         end
 
         def getUIversion
-            HangarToUI.new(this)
+            HangarToUI.new(self)
         end
     end
 end

@@ -35,7 +35,7 @@ module Deepspace
         end
 
         #Consultores
-        
+
         attr_reader :nShields
 
         attr_reader :nWeapons
@@ -59,7 +59,7 @@ module Deepspace
         #Alternativa 2 (borra todos)
         def discardWeapon(w)
             if weapons != nil
-                @weapons.delete_if {|element| element == w.type}
+                @weapons.delete_if { |element| element == w.type }
             else
                 if nWeapons > 0
                     @nWeapons -= 1
@@ -108,20 +108,15 @@ module Deepspace
             limit_nshields = [s.length, nShields].min
 
             if weapons==nil
-                limit_weapons = [w.length, nWeapons].min
+                limit_nweapons = [w.length, nWeapons].min
                 return Damage.newNumericWeapons(limit_nweapons, limit_nshields)
 
             else
                 result = []
                 w_aux = w.clone
                 weapons.each do |element|
-                    indice = -1
-                    w_aux.each do |element2|
-                        if element2.type == element
-                            indice = weapons.index(element)
-                            break
-                        end
-                    end
+                    indice = arrayContainsType(w_aux,element)
+                    
 
                     if indice != -1
                         result.push(element)
@@ -129,7 +124,7 @@ module Deepspace
                     end
                 end
 
-                return Damage.newSpecificWeapons(result, limit_nshields)
+                Damage.newSpecificWeapons(result, limit_nshields)
 
             end
         end
@@ -137,7 +132,7 @@ module Deepspace
 
 
         def getUIversion
-            DamageToUI.new(this)
+            DamageToUI.new(self )
         end
 
 

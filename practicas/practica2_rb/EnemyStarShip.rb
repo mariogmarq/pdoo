@@ -45,7 +45,7 @@ module Deepspace
         end
 
         def getUIversion()
-            EnemyToUI.new(this)
+            EnemyToUI.new(self)
         end
 
 
