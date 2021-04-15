@@ -10,7 +10,7 @@ import java.util.HashMap;
 /**
  *
  */
-public class main {
+public class testP1 {
 
     /**
      * @param args the command line arguments

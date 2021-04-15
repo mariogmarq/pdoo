@@ -26,6 +26,7 @@ module Deepspace
 
     def Hangar
       return Hangar.newCopy @hangar unless @hangar.nil?
+
       nil
     end
 
@@ -47,18 +48,12 @@ module Deepspace
       @weapons.clone
     end
 
-    def fire
-    end
-    def protection
-    end
-    def reciveShot(shot)
-    end
-    def discardWeapon(i)
-    end
-    def discardShieldBooster(i)
-    end
-    def setLoot(l)
-    end
+    def fire; end
+    def protection; end
+    def reciveShot(shot); end
+    def discardWeapon(i); end
+    def discardShieldBooster(i); end
+    def setLoot(l); end
 
     def discardHangar
       @hangar = nil
