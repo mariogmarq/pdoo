@@ -25,7 +25,7 @@ public class GameUniverse {
     private ArrayList<SpaceStation> spaceStations;
     private EnemyStarShip currentEnemy;
     
-    GameUniverse(){
+    public GameUniverse(){
         gameState = new GameStateController();
         turns = 0;
         dice = new Dice();
