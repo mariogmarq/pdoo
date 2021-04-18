@@ -15,6 +15,9 @@ module Deepspace
             @damage = d
         end
 
+        def to_s
+            "Name: " + @name + "\nammoPower: " + @ammoPower.to_s + "\nshieldPower: " + @shieldPower.to_s + "\nloot: " + @loot.to_s + "\ndamage: " + @damage.to_s + "\n"
+        end
         #Constructor de copia
         def self.newCopy(e)
             newe = EnemyStarShip.new(e.name, e.ammoPower, e.shieldPower, e.loot, e.damage)

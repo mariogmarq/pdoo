@@ -11,6 +11,9 @@ module Deepspace
             @shieldBoosters = []
         end
 
+        def to_s
+            "Max Elements: " + @maxElements.to_s + "\nWeapons: " + @weapons.to_s + "\nShieldBoosters: " + @shieldBoosters.to_s + "\n"
+        end
         #Consultores
 
         attr_reader :maxElements

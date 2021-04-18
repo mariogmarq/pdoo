@@ -135,6 +135,13 @@ module Deepspace
       DamageToUI.new(self)
     end
 
+    def to_s
+      if @weapons.nil?
+        "nWeapons: " + @nWeapons.to_s + "\nnShields: " + @nShields.to_s + "\n"
+      else
+        "weapons: " + @weapons.to_s + "\nnShields: " + @nShields.to_s + "\n"
+      end
+    end
 
   end
 end
