@@ -133,9 +133,11 @@ public class GameUniverse {
     public CombatResult combat(){
         GameState state = gameState.getState();
         if(state==GameState.BEFORECOMBAT || state==GameState.INIT){
-            return combat(currentStation, currentEnemy);
+            CombatResult result = combat(currentStation, currentEnemy);
+            gameState.next(turns, spaceStations.size());
+            return result;
         }
-        
+
         return CombatResult.NOCOMBAT;
     }
     
