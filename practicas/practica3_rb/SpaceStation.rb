@@ -99,7 +99,7 @@ module Deepspace
         @shieldBoosters.delete_at i
 
         if @pendingDamage != nil
-          @pendingDamage.discardShieldBooster s
+          @pendingDamage.discardShieldBooster
           cleanPendingDamage
         end
       end
