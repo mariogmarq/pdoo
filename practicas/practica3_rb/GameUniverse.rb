@@ -12,7 +12,7 @@ module Deepspace
       @dice = Dice.new
       @currentEnemy = nil
       @spaceStations = []
-      @currentStation = SpaceStation.new
+      @currentStation = nil
     end
 
     private def valid_state

@@ -3,14 +3,14 @@
 require 'singleton'
 
 require_relative 'CardDeck'
-require_relative 'SuppliesPackage'
-require_relative 'Weapon'
-require_relative 'WeaponType'
-require_relative 'ShieldBooster'
-require_relative 'Hangar'
-require_relative 'Loot'
-require_relative 'Damage'
-require_relative 'EnemyStarShip'
+require_relative '../SuppliesPackage'
+require_relative '../Weapon'
+require_relative '../WeaponType'
+require_relative '../ShieldBooster'
+require_relative '../Hangar'
+require_relative '../Loot'
+require_relative '../Damage'
+require_relative '../EnemyStarShip'
 
 module Deepspace
 
@@ -62,6 +62,7 @@ class CardDealer
     end
     
     def createSuppliesPackages()
+        @suppliesPackages.add(SuppliesPackage.new(5,5,5))
         @suppliesPackages.add(SuppliesPackage.new(1,10,1))
         @suppliesPackages.add(SuppliesPackage.new(1,10,1))
         @suppliesPackages.add(SuppliesPackage.new(1,10,1))
@@ -77,7 +78,8 @@ class CardDealer
         @suppliesPackages.add(SuppliesPackage.new(100,100,100))
     end
     
-    def createWeapons() 
+    def createWeapons()
+      @weapons.add(Weapon.new("Batamanta",WeaponType::PLASMA, 10))
        @weapons.add(Weapon.new("Láser infinito",WeaponType::LASER,100))
        @weapons.add(Weapon.new("Láser ACME",WeaponType::LASER,1))
        @weapons.add(Weapon.new("Láser ACME",WeaponType::LASER,1))
@@ -106,7 +108,8 @@ class CardDealer
        
     end
     
-    def createShieldBoosters() 
+    def createShieldBoosters()
+      @shieldBoosters.add(ShieldBooster.new("Un trozo de madera", 5.0, 1))
        @shieldBoosters.add(ShieldBooster.new("El escudo infinito",2.0,100))
        @shieldBoosters.add(ShieldBooster.new("El escudo definitivo",10.0,2))
        @shieldBoosters.add(ShieldBooster.new("Escudo ACME",1.5,2))
@@ -120,7 +123,8 @@ class CardDealer
        @shieldBoosters.add(ShieldBooster.new("Escudo normal",4.0,2))
     end
                                
-    def createHangars() 
+    def createHangars()
+        @hangars.add(Hangar.new(5))
         @hangars.add(Hangar.new(4))
         @hangars.add(Hangar.new(4))
         @hangars.add(Hangar.new(3))
@@ -152,7 +156,9 @@ class CardDealer
         softSpecificDamage1=Damage.newSpecificWeapons([WeaponType::MISSILE],1)  
         softSpecificDamage2=Damage.newSpecificWeapons([WeaponType::PLASMA],1)  
         mediumSpecificDamage0=Damage.newSpecificWeapons([WeaponType::LASER,WeaponType::MISSILE],2)  
-        
+
+        @enemies.add(EnemyStarShip.new("La carrera", 1000, 1000, goodLoot, hardSpecificDamage0))
+
         @enemies.add(EnemyStarShip.new("Enemigo fácil -1",0,0,regularLoot0,lowDamage0));
         @enemies.add(EnemyStarShip.new("Enemigo fácil -1",0,10,badLoot,lowDamage0));
         @enemies.add(EnemyStarShip.new("Enemigo fácil -1",10,0,badLoot,lowDamage0));
