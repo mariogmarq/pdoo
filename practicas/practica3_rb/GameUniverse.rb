@@ -1,5 +1,7 @@
 #encoding: utf-8
 
+require_relative 'lib/GameState'
+
 module Deepspace
 
   class GameUniverse
@@ -52,6 +54,30 @@ module Deepspace
     end
 
     def init(names)
+      state = @gameState.getState
+      if state == GameState::CANNOTPLAY
+        spaceStations = []
+        dealer = CardDealer.instance
+
+        names.each do |element|
+          supplies = dealer.nextSuppliesPackage
+          station = SpaceStation.new(element, supplies)
+          spaceStations.add(station)
+          nh = @dice.initWithNHangars
+          nw = @dice.initWithNWeapons
+          ns = @dice.initWithNShields
+
+          lo = Loot.new(0,nw,ns,nh,0)
+          station.setLoot(lo)
+        end
+
+        currentStationIndex = @dice.whoStarts(names.size)
+        currentStation = spaceStations.get(currentStationIndex)
+        currentEnemy = dealer.nextEnemy
+
+        gameState.next(@turns, spaceStations.size)
+
+      end
     end
 
     def mountShieldBooster(i)
