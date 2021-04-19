@@ -154,27 +154,82 @@ public class SpaceStation {
     
     
     public float fire(){
-        throw new UnsupportedOperationException();
+        float factor = 1.0f;
+        for(int i=0; i<weapons.size(); ++i){
+            Weapon w = weapons.get(i);
+            factor *= w.useIt();
+        }
+        return getAmmoPower()*factor;
     }
     
     public float protection(){
-        throw new UnsupportedOperationException();
+        float factor = 1.0f;
+        for(int i=0; i<shieldBoosters.size(); ++i){
+            ShieldBooster s = shieldBoosters.get(i);
+            factor *= s.useIt();
+        }
+        return getShieldPower()*factor;
     }
     
     public ShotResult receiveShot(float shot){
-        throw new UnsupportedOperationException();
+        float myProtection = protection();
+        if(myProtection>=shot){
+            shieldPower -= SHIELDLOSSPERUNITSHOT*shot;
+            shieldPower = Math.max(0.0f, shieldPower);
+            return ShotResult.RESIST;
+        }
+        else{
+            shieldPower = 0.0f;
+            return ShotResult.DONOTRESIST;
+        }
     }
     
     public void setLoot(Loot loot){
-        throw new UnsupportedOperationException();
+        CardDealer dealer = CardDealer.getInstance();
+        
+        if(loot.getNHangars()>0){
+            Hangar hangar = dealer.nextHangar();
+            receiveHangar(hangar);
+        }
+        
+        for(int i=0; i<loot.getNSupplies(); ++i){
+            SuppliesPackage sup = dealer.nextSuppliesPackage();
+            receiveSupplies(sup);
+        }
+        
+        for(int i=0; i<loot.getNWeapons(); ++i){
+            Weapon weap = dealer.nextWeapon();
+            receiveWeapon(weap);
+        }
+        
+        for(int i=0; i<loot.getNShields(); ++i){
+            ShieldBooster sh = dealer.nextShieldBooster();
+            receiveShieldBooster(sh);
+        }
+        
+        nMedals += loot.getNMedals();
     }
     
     public void discardWeapon(int i){
-        throw new UnsupportedOperationException();
+        int size = weapons.size();
+        if(i>=0 && i<size){
+            Weapon w = weapons.remove(i);
+            if(pendingDamage != null){
+                pendingDamage.discardWeapon(w);
+                cleanPendingDamage();
+            }
+        }
     }
     
     public void discardShieldBooster(int i){
-        throw new UnsupportedOperationException();
+        int size = shieldBoosters.size();
+        if(i>=0 && i<size){
+            shieldBoosters.remove(i);
+            if(pendingDamage != null){
+                pendingDamage.discardShieldBooster();
+                cleanPendingDamage();
+            }
+        }
     }
     
     public SpaceStationToUI getUIversion(){

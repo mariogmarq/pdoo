@@ -71,6 +71,7 @@ class CardDealer {
     }
     
     private void createSuppliesPackages() {
+        suppliesPackages.add(new SuppliesPackage(5,5,5));
         suppliesPackages.add(new SuppliesPackage(1,10,1));
         suppliesPackages.add(new SuppliesPackage(1,10,1));
         suppliesPackages.add(new SuppliesPackage(1,10,1));
@@ -86,6 +87,7 @@ class CardDealer {
         suppliesPackages.add(new SuppliesPackage(100,100,100));
     }
     private void createWeapons() {
+       weapons.add(new Weapon("Batamanta",WeaponType.PLASMA,10));
        weapons.add(new Weapon("Láser infinito",WeaponType.LASER,100));
        weapons.add(new Weapon("Láser ACME",WeaponType.LASER,1));
        weapons.add(new Weapon("Láser ACME",WeaponType.LASER,1));
@@ -114,6 +116,7 @@ class CardDealer {
        
     }
     private void createShieldBoosters() {
+       shieldBoosters.add(new ShieldBooster("Un trozo de madera",5.0f,1));
        shieldBoosters.add(new ShieldBooster("El escudo infinito",2.0f,100));
        shieldBoosters.add(new ShieldBooster("El escudo definitivo",10.0f,2));
        shieldBoosters.add(new ShieldBooster("Escudo ACME",1.5f,2));
@@ -127,6 +130,7 @@ class CardDealer {
        shieldBoosters.add(new ShieldBooster("Escudo normal",4.0f,2));
     }
     private void createHangars() {
+        hangars.add(new Hangar(5));
         hangars.add(new Hangar(4));
         hangars.add(new Hangar(4));
         hangars.add(new Hangar(3));
