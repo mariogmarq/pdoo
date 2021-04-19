@@ -30,7 +30,7 @@ public class SpaceStation {
     SpaceStation(String n, SuppliesPackage supplies){
         name = n;
         ammoPower = supplies.getAmmoPower();
-        fuelUnits = supplies.getFuelUnits();
+        assignFuelValue(supplies.getFuelUnits());
         shieldPower = supplies.getShieldPower();
         nMedals = 0;
         pendingDamage = null;
@@ -91,7 +91,7 @@ public class SpaceStation {
     
     public void receiveSupplies(SuppliesPackage s){
         ammoPower += s.getAmmoPower();
-        fuelUnits += s.getFuelUnits();
+        assignFuelValue(fuelUnits + s.getFuelUnits());
         shieldPower += s.getShieldPower();
     }
     
