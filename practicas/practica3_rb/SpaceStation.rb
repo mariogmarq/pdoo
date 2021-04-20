@@ -1,6 +1,7 @@
 #encoding: utf-8
 
 require_relative 'lib/CardDealer'
+require_relative 'lib/SpaceStationToUI'
 
 module Deepspace
   class SpaceStation
@@ -26,14 +27,14 @@ module Deepspace
     
     attr_reader :fuelUnits, :ammoPower, :nMedals, :name, :shieldPower
 
-    def Hangar
+    def hangar
       return Hangar.newCopy @hangar unless @hangar.nil?
 
       nil
     end
 
     def pendingDamage
-      return Damage.newCopy @pendingDamage if !pendingDamage.nil?
+      return Damage.newCopy @pendingDamage if !@pendingDamage.nil?
 
       nil
     end
@@ -66,7 +67,7 @@ module Deepspace
       factor * @shieldPower
     end
 
-    def reciveShot(shot)
+    def receiveShot(shot)
       myProtection = protection
 
       if myProtection >= shot

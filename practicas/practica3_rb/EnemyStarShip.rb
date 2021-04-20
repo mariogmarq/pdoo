@@ -1,6 +1,7 @@
 #encoding: utf-8
 
 require_relative 'ShotResult'
+require_relative 'lib/EnemyToUI'
 
 module Deepspace
 

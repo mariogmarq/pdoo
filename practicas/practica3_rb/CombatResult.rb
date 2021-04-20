@@ -5,7 +5,7 @@
 module Deepspace
 
 
-  module CombatResults
+  module CombatResult
     ENEMYWINS = :enemywins
     NOCOMBAT = :nocombat
     STATIONESCAPES = :stationescapes

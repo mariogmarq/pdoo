@@ -4,6 +4,11 @@ require_relative 'lib/GameState'
 require_relative 'GameCharacter'
 require_relative 'CombatResult'
 require_relative 'ShotResult'
+require_relative 'lib/GameStateController'
+require_relative 'Dice'
+require_relative 'lib/CardDealer'
+require_relative 'SpaceStation'
+require_relative 'lib/GameUniverseToUI'
 
 module Deepspace
 
@@ -48,7 +53,7 @@ module Deepspace
       @currentStation.discardWeaponInHangar i if valid_state
     end
 
-    def getState
+    def state
       @gameState.state
     end
 
@@ -57,15 +62,15 @@ module Deepspace
     end
 
     def init(names)
-      state = getState
-      if state == GameState::CANNOTPLAY
-        spaceStations = []
+      statevar = state
+      if statevar == GameState::CANNOTPLAY
+        @spaceStations = []
         dealer = CardDealer.instance
 
         names.each do |element|
           supplies = dealer.nextSuppliesPackage
           station = SpaceStation.new(element, supplies)
-          spaceStations.add(station)
+          @spaceStations.push(station)
           nh = @dice.initWithNHangars
           nw = @dice.initWithNWeapons
           ns = @dice.initWithNShields
@@ -74,11 +79,11 @@ module Deepspace
           station.setLoot(lo)
         end
 
-        currentStationIndex = @dice.whoStarts(names.size)
-        currentStation = spaceStations.at(currentStationIndex)
-        currentEnemy = dealer.nextEnemy
+        @currentStationIndex = @dice.whoStarts(names.size)
+        @currentStation = @spaceStations.at(@currentStationIndex)
+        @currentEnemy = dealer.nextEnemy
 
-        gameState.next(@turns, spaceStations.size)
+        @gameState.next(@turns, @spaceStations.size)
 
       end
     end
@@ -92,9 +97,9 @@ module Deepspace
     end
 
     def nextTurn
-      state = @gameState.state
+      statevar = @gameState.state
 
-      if state == GameStat::AFTERCOMBAT
+      if statevar == GameState::AFTERCOMBAT
         stationState = @currentStation.validState
         if stationState
           @currentStationIndex = (@currentStationIndex+1)%(@spaceStations.length)
@@ -115,13 +120,13 @@ module Deepspace
 
 
     def combat
-      state = getState
-      if state == GameState::BEFORECOMBAT || state == GameState::INIT
+      statevar = state
+      if statevar == GameState::BEFORECOMBAT || statevar == GameState::INIT
         combatResult = combatGo(@currentStation, @currentEnemy)
       else
         combatResult = CombatResult::NOCOMBAT
       end
-      @gameState.next(@turns, @spaceStations.length
+      @gameState.next(@turns, @spaceStations.length)
       return combatResult
         
     end
@@ -152,7 +157,7 @@ module Deepspace
           moves = @dice.spaceStationMoves(s) 
 
           if !moves
-            damage = enemy.Damage
+            damage = enemy.damage
             station.setPendingDamage(damage)
             combatResult = CombatResult::ENEMYWINS
           else

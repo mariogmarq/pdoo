@@ -2,6 +2,8 @@
 
 #Clase que representa a los potenciadores de escudo que pueden tener las estaciones espaciales
 
+require_relative 'lib/ShieldToUI'
+
 module Deepspace
 
   class ShieldBooster
@@ -47,7 +49,11 @@ module Deepspace
     def to_s
       return "Name:  "+ @name.to_s + "\nBoost: " + @boost.to_s + "\nUses: " + @uses.to_s
     end
-    
+
+    def getUIversion
+      ShieldToUI.new self
+    end
+
   end
 
 end

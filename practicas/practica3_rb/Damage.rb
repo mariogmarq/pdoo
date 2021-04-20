@@ -3,6 +3,7 @@
 
 #Clase que representa el daño producido a una estación espacial por una nave enemiga cuando se pierde un combate
 
+require_relative 'lib/DamageToUI'
 
 module Deepspace
 
@@ -79,7 +80,7 @@ module Deepspace
 
     def hasNoEffect
       if weapons != nil
-        if !weapons.empty
+        if !weapons.empty?
           return false
         end
       else

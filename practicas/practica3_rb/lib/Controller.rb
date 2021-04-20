@@ -82,7 +82,7 @@ class Controller
         return @model.getUIversion()
     end
 
-    def getState() 
+    def state()
         return @model.state()
     end
     

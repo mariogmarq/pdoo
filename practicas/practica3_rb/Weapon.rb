@@ -2,6 +2,7 @@
 
 #Clase que representa las armas de las que puede disponer una estación espacial para potenciar su energía al disparar
 
+require_relative 'lib/WeaponToUI'
 
 module Deepspace
 
@@ -53,6 +54,10 @@ module Deepspace
 
     def to_s
       return "Name: " + @name.to_s + "\nType: " + @type.to_s + "\nUses: " + @uses.to_s
+    end
+
+    def getUIversion
+      WeaponToUI.new self
     end
 
   end
