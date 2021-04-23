@@ -43,32 +43,22 @@ module Deepspace
 
     attr_reader :weapons
 
-      #Alternativa 1 (solo borra el primero)
     def discardWeapon(w)
-      indice = weapons.index(w.type)
+      if(weapons != nil)
+        indice = weapons.index(w.type)
         if indice != nil
           @weapons.delete_at(indice)
-        else
+        end
+
+      else
           if nWeapons>0
             @nWeapons-=1
           else
             @nWeapons=0
           end
-        end
-    end
-
-      #Alternativa 2 (borra todos)
-    def discardWeapon(w)
-      if weapons != nil
-        @weapons.delete_if { |element| element == w.type }
-      else
-        if nWeapons > 0
-          @nWeapons -= 1
-        else
-          @nWeapons = 0
-        end
       end
     end
+
 
     def discardShieldBooster
       if nShields > 0
