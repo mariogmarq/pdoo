@@ -66,6 +66,17 @@ public class DamageTest {
         assertEquals(expResult.getNWeapons(), result.getNWeapons());
         assertEquals(expResult.getNShields(), result.getNShields());
         assertEquals(expResult.getWeapons(), result.getWeapons());
+        
+         ArrayList<WeaponType> wt = (new ArrayList<>());
+         wt.add(WeaponType.LASER);
+         wt.add(WeaponType.PLASMA);
+        
+        instance = new Damage(wt, 1);
+        
+        result = instance.adjust(w, s);
+        
+        assertEquals(1, result.getNShields());
+        assertEquals(result.getWeapons().size(), 1);
     }
 
     /**
