@@ -91,7 +91,7 @@ public class SpaceStation {
     
     public void receiveSupplies(SuppliesPackage s){
         ammoPower += s.getAmmoPower();
-        assignFuelValue(fuelUnits + s.getFuelUnits());
+        assignFuelValue(Float.min(fuelUnits + s.getFuelUnits(), MAXFUEL));
         shieldPower += s.getShieldPower();
     }
     

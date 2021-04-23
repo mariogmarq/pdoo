@@ -66,7 +66,7 @@ public class Damage {
         int shields = Integer.min(s.size(), nShields);
         if(weapons == null){
             //Caso tenemos contadores
-            return new Damage(Integer.min(nWeapons, w.size()), shields);
+            return new Damage(shields, Integer.min(nWeapons, w.size()));
         }
         
        ArrayList<Weapon> wAux = new ArrayList<>(w);
