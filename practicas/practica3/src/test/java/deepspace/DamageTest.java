@@ -59,7 +59,7 @@ public class DamageTest {
         s.add(mocks);
         
         Damage instance = new Damage(3, 3);
-        Damage expResult = new Damage(1, 2);
+        Damage expResult = new Damage(2, 1);
         
         
         Damage result = instance.adjust(w, s);
@@ -92,7 +92,7 @@ public class DamageTest {
         
         assertEquals(instance.getNWeapons(), 0);
         
-        instance = new Damage(0, 1);
+        instance = new Damage(1, 0);
         instance.discardWeapon(w);
         assertEquals(instance.getNWeapons(), 0);
         
