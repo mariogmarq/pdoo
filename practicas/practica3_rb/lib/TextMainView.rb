@@ -111,7 +111,7 @@ class TextMainView
   
   def updateView()
     @gameUI = CT::Controller.instance.getUIversion()
-    @state = CT::Controller.instance.state()
+    @state = CT::Controller.instance.getState()
   end
   
   def showView() 
