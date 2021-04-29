@@ -73,10 +73,10 @@ public class Damage {
        ArrayList<WeaponType> toSet = new ArrayList<>();
        
        for(WeaponType element: weapons) {
-           int index = arrayContainsType(w, element);
+           int index = arrayContainsType(wAux, element);
           
-          if(index != -1){
-              toSet.add(element);
+          if(index != -1){  //If the element is found
+              toSet.add(element); //It can be removed
               wAux.remove(index);
           }
        }

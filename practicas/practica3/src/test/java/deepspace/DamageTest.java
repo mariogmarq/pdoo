@@ -21,7 +21,7 @@ public class DamageTest {
     
     private static Weapon mock = new Weapon("", WeaponType.LASER, 0);
     private static Weapon mockPlasma = new Weapon("", WeaponType.PLASMA, 0);
-    private static ShieldBooster mocks = new ShieldBooster("", 1,1);
+    private static ShieldBooster mockShield = new ShieldBooster("", 1,1);
     
     public DamageTest() {
     }
@@ -56,7 +56,7 @@ public class DamageTest {
         w.add(mock);
         
         ArrayList<ShieldBooster> s = new ArrayList<>();
-        s.add(mocks);
+        s.add(mockShield);
         
         Damage instance = new Damage(3, 3);
         Damage expResult = new Damage(2, 1);
@@ -77,6 +77,28 @@ public class DamageTest {
         
         assertEquals(1, result.getNShields());
         assertEquals(result.getWeapons().size(), 1);
+        
+        wt = (new ArrayList<>());
+        wt.add(WeaponType.LASER);
+        wt.add(WeaponType.PLASMA);
+        
+        instance = new Damage(wt, 0);
+        result = instance.adjust(new ArrayList<>(), s);
+        
+        assertEquals(0, result.getNShields());
+        assertEquals(result.getWeapons().size(), 0);
+
+        wt = (new ArrayList<>());
+        wt.add(WeaponType.LASER);
+        wt.add(WeaponType.PLASMA);
+
+        w.add(mockPlasma);
+
+        instance = new Damage(wt, 0);
+        result = instance.adjust(w, s);
+
+        assertEquals(0, result.getNShields());
+        assertEquals(result.getWeapons().size(), 2);
     }
 
     /**
@@ -96,7 +118,7 @@ public class DamageTest {
         instance.discardWeapon(w);
         assertEquals(instance.getNWeapons(), 0);
         
-        ArrayList<WeaponType> wl =new ArrayList<WeaponType>();
+        ArrayList<WeaponType> wl =new ArrayList<>();
         wl.add(WeaponType.PLASMA);
         instance = new Damage(wl, 0);
         instance.discardWeapon(w);
