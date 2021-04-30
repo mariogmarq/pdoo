@@ -54,9 +54,8 @@ public class SpaceStation {
     }
     
     private void assignFuelValue(float f){
-        if (f<= MAXFUEL) {
-            fuelUnits = f;
-        }
+        
+        fuelUnits = Float.min(f, MAXFUEL);
     }
     
     private void cleanPendingDamage(){
@@ -91,7 +90,7 @@ public class SpaceStation {
     
     public void receiveSupplies(SuppliesPackage s){
         ammoPower += s.getAmmoPower();
-        assignFuelValue(Float.min(fuelUnits + s.getFuelUnits(), MAXFUEL));
+        assignFuelValue(fuelUnits + s.getFuelUnits());
         shieldPower += s.getShieldPower();
     }
     

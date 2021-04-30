@@ -50,47 +50,5 @@ public class SuppliesPackageTest {
         
         
     }
-
-    /**
-     * Test of getFuelUnits method, of class SuppliesPackage.
-     */
-    @Test
-    public void testGetFuelUnits() {
-        System.out.println("getFuelUnits");
-        SuppliesPackage instance = null;
-        float expResult = 0.0F;
-        float result = instance.getFuelUnits();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getShieldPower method, of class SuppliesPackage.
-     */
-    @Test
-    public void testGetShieldPower() {
-        System.out.println("getShieldPower");
-        SuppliesPackage instance = null;
-        float expResult = 0.0F;
-        float result = instance.getShieldPower();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toString method, of class SuppliesPackage.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        SuppliesPackage instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
 }
