@@ -115,7 +115,7 @@ module Deepspace
         end
         return false
       end
-      return false
+      false
     end
 
 
@@ -127,7 +127,7 @@ module Deepspace
         combatResult = CombatResult::NOCOMBAT
       end
       @gameState.next(@turns, @spaceStations.length)
-      return combatResult
+      combatResult
         
     end
 
@@ -170,7 +170,7 @@ module Deepspace
           station.setLoot(aLoot)
           combatResult = CombatResult::STATIONWINS
         end
-        return combatResult
+      combatResult
     end
 
 

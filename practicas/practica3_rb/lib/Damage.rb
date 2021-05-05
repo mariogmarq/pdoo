@@ -22,12 +22,12 @@ module Deepspace
     end
 
     def self.newSpecificWeapons(w, s)
-      new(NO_USE, s, w)
+      new(NO_USE, s, w.clone)
     end
 
       #Constructor de copia
     def self.newCopy(d)
-      if(d.weapons!=nil)
+      if d.weapons != nil
         newd = Damage.newSpecificWeapons(d.weapons, d.nShields)
       else
         newd = Damage.newNumericWeapons(d.nWeapons, d.nShields)
@@ -41,7 +41,13 @@ module Deepspace
 
     attr_reader :nWeapons
 
-    attr_reader :weapons
+    def weapons
+      if @weapons.nil?
+        nil
+      else
+        @weapons.clone
+      end
+    end
 
     def discardWeapon(w)
       if(weapons != nil)
@@ -78,6 +84,7 @@ module Deepspace
           return false
         end
       end
+
         if nShields > 0
           return false
         end
@@ -86,10 +93,10 @@ module Deepspace
 
       private def arrayContainsType(w, t)
         indice = w.index(t)
-          if(indice != nil)
-            return indice
+          if indice != nil
+            indice
           else
-            return -1
+            -1
           end
       end
 

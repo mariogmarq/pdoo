@@ -19,8 +19,14 @@ module Deepspace
         #Consultores
 
         attr_reader :maxElements
-        attr_reader :weapons
-        attr_reader :shieldBoosters
+
+        def weapons
+            @weapons.clone
+        end
+
+        def shieldBoosters
+            @shieldBoosters.clone
+        end
 
         #Constructor de copia de la clase
         def self.newCopy(h)
@@ -35,29 +41,29 @@ module Deepspace
         end
 
         #Metodos
-        def spaceAvailable
+        private def spaceAvailable
             if weapons.length + shieldBoosters.length < maxElements
-                return true
+                true
             else
-                return false
+                false
             end
         end
 
         def addWeapon(w)
             if spaceAvailable
                 @weapons.push(w)
-                return true
+                true
             else
-                return false
+                false
             end
         end
 
         def addShieldBooster(s)
             if spaceAvailable
                 @shieldBoosters.push(s)
-                return true
+                true
             else
-                return false
+                false
             end
         end
         
@@ -65,9 +71,9 @@ module Deepspace
             if w>=0 && w<weapons.length
                 aux = weapons[w]
                 @weapons.delete_at(w)
-                return aux
+                aux
             else
-                return nil
+                nil
             end
         end
 
@@ -75,9 +81,9 @@ module Deepspace
             if s>=0 && s<shieldBoosters.length
                 aux = shieldBoosters[s]
                 @shieldBoosters.delete_at(s)
-                return aux
+                aux
             else
-                return nil
+                nil
             end
         end
 

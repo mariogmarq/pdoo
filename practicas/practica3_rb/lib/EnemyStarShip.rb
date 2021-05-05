@@ -2,6 +2,7 @@
 
 require_relative 'ShotResult'
 require_relative 'EnemyToUI'
+require_relative 'Damage'
 
 module Deepspace
 
@@ -19,6 +20,7 @@ module Deepspace
         def to_s
             "Name: " + @name + "\nammoPower: " + @ammoPower.to_s + "\nshieldPower: " + @shieldPower.to_s + "\nloot: " + @loot.to_s + "\ndamage: " + @damage.to_s + "\n"
         end
+
         #Constructor de copia
         def self.newCopy(e)
             newe = EnemyStarShip.new(e.name, e.ammoPower, e.shieldPower, e.loot, e.damage)
@@ -30,7 +32,10 @@ module Deepspace
         attr_reader :ammoPower
         attr_reader :shieldPower
         attr_reader :loot
-        attr_reader :damage
+
+        def damage
+            Damage.newCopy @damage
+        end
 
         def protection
             @shieldPower

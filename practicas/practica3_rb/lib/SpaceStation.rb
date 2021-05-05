@@ -194,7 +194,7 @@ module Deepspace
 
     def cleanUpMountedItems
       @weapons.delete_if { |weapon|  weapon.uses.zero?}
-      @shieldBoosters.delete_if { |s| s.uses.zero? }
+      @shieldBoosters.delete_if { |shield| shield.uses.zero? }
     end
 
     def validState

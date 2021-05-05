@@ -20,34 +20,21 @@ module Deepspace
       ShieldBooster.new(orig.name, orig.boost, orig.uses)
     end
 
-    #Método consultor de boost
-    def boost
-      @boost
-    end
-
-    #Metodo consultor del número de usos del potenciador de escudo 
-    def uses
-      @uses
-    end
-
-    #Método consultor del nombre del potenciador de escudo
-    def name
-      @name
-    end
+    attr_reader :boost, :name, :uses
 
     #Método que decrementa uses en una unidad y devuelve boost si uses es mayor que 0,
     # o que devuelve 1.0 en otro caso
     def useIt
       if @uses > 0
         @uses -= 1
-        return @boost
+        @boost
       else
-        return 1.0
+        1.0
       end
     end
 
     def to_s
-      return "Name:  "+ @name.to_s + "\nBoost: " + @boost.to_s + "\nUses: " + @uses.to_s
+      "Name:  "+ @name.to_s + "\nBoost: " + @boost.to_s + "\nUses: " + @uses.to_s
     end
 
     def getUIversion

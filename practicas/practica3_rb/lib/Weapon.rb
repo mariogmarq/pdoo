@@ -8,7 +8,6 @@ module Deepspace
 
   class Weapon
 
-    #Constructor sin parámetros de la clase
     def initialize(name, type, uses)
       @name = name
       @type = type
@@ -46,14 +45,14 @@ module Deepspace
     def useIt
       if @uses > 0
         @uses -= 1
-        return power
+        power
       else
-        return 1.0
+        1.0
       end
     end
 
     def to_s
-      return "Name: " + @name.to_s + "\nType: " + @type.to_s + "\nUses: " + @uses.to_s
+      "Name: " + @name.to_s + "\nType: " + @type.to_s + "\nUses: " + @uses.to_s
     end
 
     def getUIversion
