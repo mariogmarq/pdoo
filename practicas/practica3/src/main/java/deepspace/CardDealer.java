@@ -180,6 +180,7 @@ class CardDealer {
         Damage mediumSpecificDamage0;
         mediumSpecificDamage0=new Damage(new ArrayList<>(Arrays.asList(WeaponType.LASER,
                                                                         WeaponType.MISSILE)),2);  
+         enemies.add(new EnemyStarShip("La carrera",1000,1000,regularLoot1,hardSpecificDamage0));
         
         enemies.add(new EnemyStarShip("Enemigo fácil -1",0,0,regularLoot0,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil -1",0,10,badLoot,lowDamage0));
