@@ -67,7 +67,7 @@ public class Loot {
         return nMedals;
     }
     
-    public LootToUI getUIversion() {
+    LootToUI getUIversion() {
         return new LootToUI(this);
     }
 

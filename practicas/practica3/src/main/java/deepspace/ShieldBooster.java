@@ -60,7 +60,7 @@ public class ShieldBooster {
         return 1.0f;
     }
     
-    public ShieldToUI getUIversion() {
+    ShieldToUI getUIversion() {
         return new ShieldToUI(this);
     }
 

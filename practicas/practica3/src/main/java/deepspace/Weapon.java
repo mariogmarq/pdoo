@@ -69,7 +69,7 @@ public class Weapon {
         return 1.0f;
     }
     
-    public WeaponToUI getUIversion() {
+    WeaponToUI getUIversion() {
         return new WeaponToUI(this);
     }
 
