@@ -25,29 +25,23 @@ module Deepspace
       new(NO_USE, s, w.clone)
     end
 
-      #Constructor de copia
+    #Constructor de copia
     def self.newCopy(d)
       if d.weapons != nil
         newd = Damage.newSpecificWeapons(d.weapons, d.nShields)
       else
         newd = Damage.newNumericWeapons(d.nWeapons, d.nShields)
       end
-        return newd
+      return newd
     end
 
-      #Consultores
+    #Consultores
 
     attr_reader :nShields
 
     attr_reader :nWeapons
 
-    def weapons
-      if @weapons.nil?
-        nil
-      else
-        @weapons.clone
-      end
-    end
+    attr_reader :weapons
 
     def discardWeapon(w)
       if(weapons != nil)
@@ -57,11 +51,11 @@ module Deepspace
         end
 
       else
-          if nWeapons>0
-            @nWeapons-=1
-          else
-            @nWeapons=0
-          end
+        if nWeapons>0
+          @nWeapons-=1
+        else
+          @nWeapons=0
+        end
       end
     end
 
@@ -85,46 +79,46 @@ module Deepspace
         end
       end
 
-        if nShields > 0
-          return false
-        end
-        return true
+      if nShields > 0
+        return false
+      end
+      return true
     end
 
-      private def arrayContainsType(w, t)
-        indice = w.index(t)
-          if indice != nil
-            indice
-          else
-            -1
-          end
+    private def arrayContainsType(w, t)
+      indice = w.index {|x| x.type == t }
+      if indice != nil
+        indice
+      else
+        -1
       end
+    end
 
 
 
     def adjust(w, s)
       limit_nshields = [s.length, nShields].min
 
-        if weapons==nil
-          limit_nweapons = [w.length, nWeapons].min
-            return Damage.newNumericWeapons(limit_nweapons, limit_nshields)
+      if weapons==nil
+        limit_nweapons = [w.length, nWeapons].min
+        return Damage.newNumericWeapons(limit_nweapons, limit_nshields)
 
-        else
-          result = []
-            w_aux = w.clone
-            weapons.each do |element|
-              indice = arrayContainsType(w_aux, element)
-                
+      else
+        result = []
+        w_aux = w.clone
+        weapons.each do |element|
+          indice = arrayContainsType(w_aux, element)
 
-                if indice != -1
-                  result.push(element)
-                    w_aux.delete_at(indice)
-                end
-            end
 
-            Damage.newSpecificWeapons(result, limit_nshields)
-
+          if indice != -1
+            result.push(element)
+            w_aux.delete_at(indice)
+          end
         end
+
+        Damage.newSpecificWeapons(result, limit_nshields)
+
+      end
     end
 
 

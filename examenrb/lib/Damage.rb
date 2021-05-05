@@ -41,13 +41,7 @@ module Deepspace
 
     attr_reader :nWeapons
 
-    def weapons
-      if @weapons.nil?
-        nil
-      else
-        @weapons.clone
-      end
-    end
+    attr_reader :weapons
 
     def discardWeapon(w)
       if(weapons != nil)
@@ -92,7 +86,7 @@ module Deepspace
     end
 
       private def arrayContainsType(w, t)
-        indice = w.index(t)
+        indice = w.index {|x| x.type == t }
           if indice != nil
             indice
           else
