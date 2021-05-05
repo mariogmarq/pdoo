@@ -2,7 +2,7 @@
 
 #Clase que representa las armas de las que puede disponer una estación espacial para potenciar su energía al disparar
 
-require_relative 'lib/WeaponToUI'
+require_relative 'WeaponToUI'
 
 module Deepspace
 

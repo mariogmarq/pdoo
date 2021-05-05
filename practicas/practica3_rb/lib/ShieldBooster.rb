@@ -2,7 +2,7 @@
 
 #Clase que representa a los potenciadores de escudo que pueden tener las estaciones espaciales
 
-require_relative 'lib/ShieldToUI'
+require_relative 'ShieldToUI'
 
 module Deepspace
 

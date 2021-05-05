@@ -3,7 +3,7 @@
 
 #Clase que representa el daño producido a una estación espacial por una nave enemiga cuando se pierde un combate
 
-require_relative 'lib/DamageToUI'
+require_relative 'DamageToUI'
 
 module Deepspace
 

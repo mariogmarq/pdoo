@@ -1,7 +1,7 @@
 #encoding: utf-8
 
-require_relative 'lib/CardDealer'
-require_relative 'lib/SpaceStationToUI'
+require_relative 'CardDealer'
+require_relative 'SpaceStationToUI'
 
 module Deepspace
   class SpaceStation

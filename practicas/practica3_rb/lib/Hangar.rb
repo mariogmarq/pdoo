@@ -1,6 +1,6 @@
 #encoding: utf-8
 
-require_relative 'lib/HangarToUI'
+require_relative 'HangarToUI'
 
 module Deepspace
 

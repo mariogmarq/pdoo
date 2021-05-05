@@ -1,14 +1,14 @@
 #encoding: utf-8
 
-require_relative 'lib/GameState'
+require_relative 'GameState'
 require_relative 'GameCharacter'
 require_relative 'CombatResult'
 require_relative 'ShotResult'
-require_relative 'lib/GameStateController'
+require_relative 'GameStateController'
 require_relative 'Dice'
-require_relative 'lib/CardDealer'
+require_relative 'CardDealer'
 require_relative 'SpaceStation'
-require_relative 'lib/GameUniverseToUI'
+require_relative 'GameUniverseToUI'
 
 module Deepspace
 
@@ -37,7 +37,7 @@ module Deepspace
         @currentStation.discardHangar if valid_state
     end
 
-    def discardShielBooster(i)
+    def discardShieldBooster(i)
       @currentStation.discardShieldBooster i if valid_state
     end
 

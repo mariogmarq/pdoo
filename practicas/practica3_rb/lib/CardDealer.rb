@@ -3,14 +3,14 @@
 require 'singleton'
 
 require_relative 'CardDeck'
-require_relative '../SuppliesPackage'
-require_relative '../Weapon'
-require_relative '../WeaponType'
-require_relative '../ShieldBooster'
-require_relative '../Hangar'
-require_relative '../Loot'
-require_relative '../Damage'
-require_relative '../EnemyStarShip'
+require_relative 'SuppliesPackage'
+require_relative 'Weapon'
+require_relative 'WeaponType'
+require_relative 'ShieldBooster'
+require_relative 'Hangar'
+require_relative 'Loot'
+require_relative 'Damage'
+require_relative 'EnemyStarShip'
 
 module Deepspace
 

@@ -2,7 +2,7 @@
 
 #Clase que representa el botín que se obtiene al vencer a una nave enemiga.
 
-require_relative 'lib/LootToUI'
+require_relative 'LootToUI'
 
 module Deepspace
   
