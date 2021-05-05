@@ -115,6 +115,7 @@ public class GameUniverse {
             boolean stationState = currentStation.validState();
             if(stationState){
                 currentStationIndex = (currentStationIndex + 1) % spaceStations.size();
+                turns++;
                 currentStation = spaceStations.get(currentStationIndex);
                 currentStation.cleanUpMountedItems();
                 CardDealer dealer = CardDealer.getInstance();
