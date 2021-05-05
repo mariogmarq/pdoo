@@ -144,5 +144,6 @@ class Test_p1
     testDice
   end
 
-  main
 end
+
+Test_p1.new.main
