@@ -10,7 +10,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    <name>examenJV</name>
+    <name>practica3</name>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
