@@ -2,6 +2,9 @@
 
 require_relative 'CardDealer'
 require_relative 'SpaceStationToUI'
+require_relative 'Transformation'
+require_relative 'SuppliesPackage'
+require_relative 'Loot'
 
 module Deepspace
   class SpaceStation
@@ -19,6 +22,17 @@ module Deepspace
       @shieldBoosters = []
       @hangar = nil
 
+    end
+
+    def self.newCopy(other)
+      supplies = SuppliesPackage.new(other.ammoPower, other.fuelUnits, other.shieldPower)
+      newS = new(other.name, supplies)
+      newS.receiveHangar(other.hangar)
+      newS.setPendingDamage other.pendingDamage
+      newS.nMedals = other.nMedals
+      newS.weapons = other.weapons
+      newS.shieldBoosters = other.shieldBoosters
+      newS
     end
 
     def getUIversion
@@ -137,6 +151,14 @@ module Deepspace
       end
 
       @nMedals += l.nMedals
+
+      if l.spaceCity
+         Transformation::SPACECITY
+      elsif l.getEfficient
+        Transformation::GETEFFICIENT
+      else
+        Transformation::NOTRANSFORM
+      end
     end
 
     def discardHangar
@@ -204,6 +226,8 @@ module Deepspace
     def setPendingDamage(d)
       @pendingDamage = d.adjust(weapons, shieldBoosters)
     end
+
+    attr_writer :nMedals, :weapons, :shieldBoosters
 
     private
     def assignFuelValue(f)
