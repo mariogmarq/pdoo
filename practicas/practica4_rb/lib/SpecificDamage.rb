@@ -26,7 +26,7 @@ module Deepspace
     end
 
     def hasNoEffect
-      !(!weapons.empty? || nShields > 0)
+      @weapons.empty? and super
     end
 
     private def arrayContainsType(w, t)
@@ -48,11 +48,10 @@ module Deepspace
     end
 
     def to_s
-      "weapons: " + @weapons.to_s + "\nnShields: " + @nShields.to_s + "\n"
+      "weapons: " + @weapons.to_s + "\n" + super
     end
 
     def adjust(w, s)
-      limit_nshields = [s.length, nShields].min
       result = []
       w_aux = w.clone
       weapons.each do |element|
@@ -64,7 +63,7 @@ module Deepspace
         end
       end
 
-      SpecificDamage.new(result, limit_nshields)
+      SpecificDamage.new(result, adjustShields(s))
     end
   end
 end

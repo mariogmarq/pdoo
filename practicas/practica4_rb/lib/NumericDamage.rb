@@ -9,9 +9,6 @@ module Deepspace
 
     attr_reader :nShields, :nWeapons
 
-    def copy
-      NumericDamage.newCopy self
-    end
 
     def initialize(w, s)
       @nWeapons = w
@@ -20,6 +17,10 @@ module Deepspace
 
     def self.newCopy(d)
       new(d.nWeapons, d.nShields)
+    end
+
+    def copy
+      NumericDamage.newCopy self
     end
 
     def discardWeapon(w)
@@ -31,11 +32,11 @@ module Deepspace
     end
 
     def hasNoEffect
-      !(nWeapons > 0 or nShields > 0)
+      nWeapons.zero? and super
     end
 
     def adjust(w, s)
-      limit_nshields = [s.length, nShields].min
+      limit_nshields = adjustShields s
       limit_nweapons = [w.length, nWeapons].min
       NumericDamage.new(limit_nweapons, limit_nshields)
     end
@@ -45,7 +46,7 @@ module Deepspace
     end
 
     def to_s
-      "nWeapons: " + @nWeapons.to_s + "\nnShields: " + @nShields.to_s + "\n"
+      "nWeapons: " + @nWeapons.to_s + "\n" + super
     end
 
   end

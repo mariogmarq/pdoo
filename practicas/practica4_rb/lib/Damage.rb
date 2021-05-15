@@ -13,7 +13,7 @@ module Deepspace
     end
 
     #Constructor de copia
-    def self.copy()
+    def copy()
     end
 
     def discardWeapon(w) end
@@ -27,14 +27,21 @@ module Deepspace
     end
 
     def hasNoEffect
+      @nShields.zero?
     end
 
-    def adjust(w, s) end
+    def adjust(w, s)
+    end
+
+    def adjustShields(s)
+      [s.length, nShields].min
+    end
 
     def getUIversion
     end
 
     def to_s
+      "nShields: " + @nShields.to_s + "\n"
     end
 
   end
