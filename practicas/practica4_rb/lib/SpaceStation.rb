@@ -24,16 +24,7 @@ module Deepspace
 
     end
 
-    def self.newCopy(other)
-      supplies = SuppliesPackage.new(other.ammoPower, other.fuelUnits, other.shieldPower)
-      newS = new(other.name, supplies)
-      newS.receiveHangar(other.hangar)
-      newS.setPendingDamage other.pendingDamage
-      newS.nMedals = other.nMedals
-      newS.weapons = other.weapons
-      newS.shieldBoosters = other.shieldBoosters
-      newS
-    end
+
 
     def getUIversion
       SpaceStationToUI.new self
@@ -227,8 +218,6 @@ module Deepspace
       @pendingDamage = d.adjust(weapons, shieldBoosters)
     end
 
-    attr_writer :nMedals, :weapons, :shieldBoosters
-
     private
     def assignFuelValue(f)
       @fuelUnits = f
@@ -241,6 +230,16 @@ module Deepspace
       end
     end
 
-
+    def fromOther(other)
+      @name = other.name
+      @ammoPower = other.ammoPower
+      @fuelUnits = other.fuelUnits
+      @shieldPower = other.shieldPower
+      @hangar = other.hangar
+      @pendingDamage = other.pendingDamage
+      @nMedals = other.nMedals
+      @weapons = other.weapons
+      @shieldBoosters = other.shieldBoosters
+    end
   end
 end

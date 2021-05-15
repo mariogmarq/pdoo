@@ -1,13 +1,18 @@
 #encoding: utf-8
 
 require_relative 'SpaceStation'
+require_relative 'SpaceCityToUI'
+require_relative 'ShotResult'
+require_relative 'Transformation'
 
 module Deepspace
 
   class SpaceCity < SpaceStation
+
     def initialize(base, rest)
+      fromOther base
       @base = base
-      @collaborators = rest.clone
+      @collaborators = rest
     end
 
     def collaborators
@@ -35,46 +40,13 @@ module Deepspace
       fire_power
     end
 
-
     def setLoot(l)
-      dealer = CardDealer.instance
-      h = l.nHangars
+      super l
+      Transformation::NOTRANSFORM
+    end
 
-      if h > 0
-        hangar = dealer.nextHangar
-        receiveHangar hangar
-      end
-
-      elements = l.nSupplies
-
-      elements.times do
-        sup = dealer.nextSuppliesPackage
-        receiveSupplies sup
-      end
-
-      elements = l.nWeapons
-
-      elements.times do
-        w = dealer.nextWeapon
-        receiveWeapon w
-      end
-
-      elements = l.nShields
-
-      elements.times do
-        s = dealer.nextShieldBooster
-        receiveShieldBooster s
-      end
-
-      @nMedals += l.nMedals
-
-      if l.spaceCity
-        Transformation::SPACECITY
-      elsif l.getEfficient
-        Transformation::GETEFFICIENT
-      else
-        Transformation::NOTRANSFORM
-      end
+    def getUIversion
+      SpaceCityToUI.new self
     end
 
   end
