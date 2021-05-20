@@ -20,6 +20,7 @@ public class SpaceCity extends SpaceStation {
         super(base);
         collaborators = rest;
         collaborators.add(0, base);
+        this.base = base;
     }
     
     ArrayList<SpaceStation> getCollaborators(){
