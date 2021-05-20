@@ -8,7 +8,7 @@ package deepspace;
 /**
  *
  */
-public class EnemyStarShip {
+public class EnemyStarShip implements SpaceFighter{
     private String name;
     private float ammoPower;
     private float shieldPower;
@@ -27,6 +27,7 @@ public class EnemyStarShip {
         this(e.getName(), e.getAmmoPower(), e.getShieldPower(), e.getLoot(), e.getDamage());
     }
     
+    @Override
     public float fire() {
         return ammoPower;
     }
@@ -36,13 +37,14 @@ public class EnemyStarShip {
     }
 
     public Damage getDamage() {
-        return new Damage(damage);
+        return damage.copy();
     }
 
     public float getShieldPower() {
         return shieldPower;
     }
     
+    @Override
     public float protection() {
         return shieldPower;
     }
@@ -53,7 +55,8 @@ public class EnemyStarShip {
      * la nave enemiga no resiste (DONOTRESIST).  En casocontrario resiste el disparo (RESIST).
      * 
      */
-    public ShotResult recieveShot(float shot) {
+    @Override
+    public ShotResult receiveShot(float shot) {
         if(shot > getShieldPower()){
             return ShotResult.DONOTRESIST;
         }

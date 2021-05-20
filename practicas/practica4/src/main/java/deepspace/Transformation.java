@@ -6,8 +6,10 @@
 package deepspace;
 
 /**
- * representa  todos los resultados posibles de un combate entre una estación espacialy una nave enemiga
+ *
+ * @author inmagalvez
  */
-public enum CombatResult {
-    ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS, STATIONWINSANDCONVERTS;
+public enum Transformation {
+    NOTRANSFORM, GETEFFICIENT, SPACECITY;
+    
 }

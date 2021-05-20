@@ -8,7 +8,7 @@ package deepspace;
 /**
  * representa a los potenciadores de escudo que pueden tener las estaciones espaciales.
  */
-public class ShieldBooster {
+public class ShieldBooster implements CombatElement {
     private String name;
     private float boost;
     private int uses;
@@ -43,6 +43,7 @@ public class ShieldBooster {
     /**
      * @return cantidad de usos restantes
      */
+    @Override
     public int getUses() {
         return uses;
     }
@@ -51,6 +52,7 @@ public class ShieldBooster {
      * usa el potenciador disminuyendo el numero de usos
      * @return el valor del potenciador o 1 en caso de que no queden usos
      */
+    @Override
     public float useIt(){
         if(uses > 0){
             uses--;

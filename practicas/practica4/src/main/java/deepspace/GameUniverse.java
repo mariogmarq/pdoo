@@ -25,6 +25,8 @@ public class GameUniverse {
     private ArrayList<SpaceStation> spaceStations;
     private EnemyStarShip currentEnemy;
     
+    boolean haveSpaceCity;
+    
     public GameUniverse(){
         gameState = new GameStateController();
         turns = 0;
@@ -152,14 +154,14 @@ public class GameUniverse {
             
             if(result == ShotResult.RESIST){
                 fire = station.fire();
-                result = enemy.recieveShot(fire);
+                result = enemy.receiveShot(fire);
                 enemyWins = (result==ShotResult.RESIST);
             } else {
                 enemyWins = true;
             }
         } else {
             float fire = station.fire();
-            ShotResult result = enemy.recieveShot(fire);
+            ShotResult result = enemy.receiveShot(fire);
             enemyWins = (result == ShotResult.RESIST);
         }
         
@@ -184,6 +186,8 @@ public class GameUniverse {
     public GameUniverseToUI getUIversion(){
         return new GameUniverseToUI(currentStation, currentEnemy);
     }
+    
+    
     
     
 }

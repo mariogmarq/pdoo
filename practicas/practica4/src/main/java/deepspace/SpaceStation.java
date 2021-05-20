@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * Representa una Estacion Espacial
  */
-public class SpaceStation {
+public class SpaceStation implements SpaceFighter {
     
     private static final int MAXFUEL = 100;
     private static final float SHIELDLOSSPERUNITSHOT = 0.1f;
@@ -37,6 +37,15 @@ public class SpaceStation {
         weapons = new ArrayList<>();
         shieldBoosters = new ArrayList<>();
         hangar = null;
+    }
+    
+    SpaceStation(SpaceStation station){
+        this(station.name, new SuppliesPackage(station.ammoPower, station.fuelUnits, station.shieldPower));
+        nMedals = station.nMedals;
+        pendingDamage = station.pendingDamage;
+        weapons = new ArrayList<>(station.weapons);
+        shieldBoosters = new ArrayList<>(station.shieldBoosters);
+        hangar = station.hangar;
     }
     
     public float getAmmoPower(){return ammoPower;}
@@ -151,7 +160,7 @@ public class SpaceStation {
         shieldBoosters.removeIf(n -> n.getUses()==0);
     }
     
-    
+    @Override
     public float fire(){
         float factor = 1.0f;
         for(int i=0; i<weapons.size(); ++i){
@@ -161,6 +170,7 @@ public class SpaceStation {
         return getAmmoPower()*factor;
     }
     
+    @Override
     public float protection(){
         float factor = 1.0f;
         for(int i=0; i<shieldBoosters.size(); ++i){
@@ -170,6 +180,7 @@ public class SpaceStation {
         return getShieldPower()*factor;
     }
     
+    @Override
     public ShotResult receiveShot(float shot){
         float myProtection = protection();
         if(myProtection>=shot){
@@ -183,12 +194,12 @@ public class SpaceStation {
         }
     }
     
-    public void setLoot(Loot loot){
+    public Transformation setLoot(Loot loot){
         CardDealer dealer = CardDealer.getInstance();
         
         if(loot.getNHangars()>0){
-            Hangar hangar = dealer.nextHangar();
-            receiveHangar(hangar);
+            Hangar h = dealer.nextHangar();
+            receiveHangar(h);
         }
         
         for(int i=0; i<loot.getNSupplies(); ++i){
@@ -207,6 +218,13 @@ public class SpaceStation {
         }
         
         nMedals += loot.getNMedals();
+        
+        if(loot.getEfficient())
+            return Transformation.GETEFFICIENT;
+        if(loot.spaceCity())
+            return Transformation.SPACECITY;
+        
+        return Transformation.NOTRANSFORM;
     }
     
     public void discardWeapon(int i){

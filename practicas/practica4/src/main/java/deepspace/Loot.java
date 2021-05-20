@@ -16,6 +16,8 @@ public class Loot {
     private int nShields;
     private int nHangars;
     private int nMedals;
+    private boolean getEfficient;
+    private boolean spaceCity;
 
     /**
      * Construye un Loot con los siguientes parametros
@@ -31,6 +33,20 @@ public class Loot {
         this.nShields = nShields;
         this.nHangars = nHangars;
         this.nMedals = nMedals;
+    }
+    
+    Loot(int nSupplies, int nWeapons, int nShields, int nHangars, int nMedals, boolean efficient, boolean city){
+        this(nSupplies, nWeapons, nShields, nHangars, nMedals);
+        getEfficient = efficient;
+        spaceCity = city;
+    }
+    
+    public boolean getEfficient(){
+        return getEfficient;
+    }
+    
+    public boolean spaceCity(){
+        return spaceCity;
     }
     
     /**

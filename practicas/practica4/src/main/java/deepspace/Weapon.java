@@ -8,7 +8,7 @@ package deepspace;
 /**
  * representa a las armas de las que puede disponer una estación espacial para potenciar suenergía al disparar.
  */
-public class Weapon {
+public class Weapon implements CombatElement{
     private String name;
     private WeaponType type;
     private int uses;
@@ -45,6 +45,7 @@ public class Weapon {
     /**
      * @return usos restantes del arma
      */
+    @Override
     public int getUses() {
         return uses;
     }
@@ -60,6 +61,7 @@ public class Weapon {
      * Usa el arma disminuyendo sus usos en uno
      * @return el poder del arma o 1.0 en caso de que no queden usos
      */
+    @Override
     public float useIt(){
         if(uses > 0){
             uses--;
