@@ -21,7 +21,5 @@ public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation{
         float eficiencia = (new Dice()).extraEfficiency() ? EXTRAEFFICIENCY : 1.0f;
         
         return super.fire() * eficiencia;
-        
-        
     }
 }
