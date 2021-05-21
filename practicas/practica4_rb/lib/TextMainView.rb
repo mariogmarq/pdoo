@@ -466,6 +466,11 @@ class TextMainView
       return option
   end
 
+
+  public def conversionMessage
+    puts "Has GANADO el combate. \nAdemás te has CONVERTIDO. \nDisfruta de tu botín"
+  end
+
   end # class
   
 end # module

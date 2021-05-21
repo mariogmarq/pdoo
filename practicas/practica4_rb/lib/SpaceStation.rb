@@ -145,7 +145,7 @@ module Deepspace
 
       if l.spaceCity
          Transformation::SPACECITY
-      elsif l.getEfficient
+      elsif l.efficient
         Transformation::GETEFFICIENT
       else
         Transformation::NOTRANSFORM

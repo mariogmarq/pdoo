@@ -13,6 +13,7 @@ module Deepspace
       @NSHIELDSPROB = 0.25
       @NWEAPONSPROB = 0.33
       @FIRSTSHOTPROB = 0.5
+      @EXTRAEFFICIENCYPROB = 0.8
       @generator = Random.new
     end
 
@@ -63,6 +64,10 @@ module Deepspace
     #Método que determina si la estación espacial se moverá para esquivar un disparo.
     def spaceStationMoves(speed)
       @generator.rand(1.0) < speed
+    end
+
+    def extraEfficiency
+      @generator.rand(1.0) < @EXTRAEFFICIENCYPROB
     end
 
   end

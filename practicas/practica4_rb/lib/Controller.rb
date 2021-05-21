@@ -75,6 +75,12 @@ class Controller
           end
         when DS::CombatResult::NOCOMBAT
           @view.noCombatMessage()
+        when DS::CombatResult::STATIONWINSANDCONVERTS
+          @view.conversionMessage
+          if @model.haveAWinner()
+            @view.wonGameMessage()
+            exit(0)
+          end
         end
     end
 

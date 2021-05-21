@@ -23,6 +23,7 @@ module Deepspace
       @currentEnemy = nil
       @spaceStations = []
       @currentStation = nil
+      @haveSpaceCity = false
     end
 
     private def valid_state
@@ -167,10 +168,38 @@ module Deepspace
 
         else
           aLoot = enemy.loot
-          station.setLoot(aLoot)
+          trans = station.setLoot(aLoot)
           combatResult = CombatResult::STATIONWINS
+
+          if trans == Transformation::GETEFFICIENT
+            makeStationEfficient
+            return CombatResult::STATIONWINSANDCONVERTS
+          elsif trans == Transformation::SPACECITY
+            createSpaceCity
+            return CombatResult::STATIONWINSANDCONVERTS
+          end
+
         end
       combatResult
+    end
+
+    def makeStationEfficient
+      if @dice.extraEfficiency
+        @currentStation = BetaPowerEfficientSpaceStation.new(@currentStation)
+      else
+        @currentStation = PowerEfficientSpaceStation.new(@currentStation)
+      end
+        @spaceStations[@currentStationIndex] = @currentStation
+    end
+
+    def createSpaceCity
+      if @haveSpaceCity == false
+        stations = @spaceStations.clone
+        stations.delete_at(@currentStationIndex)
+        @currentStation = SpaceCity.new(@currentStation, stations)
+
+        @spaceStations[@currentStationIndex] = @currentStation
+      end
     end
 
 

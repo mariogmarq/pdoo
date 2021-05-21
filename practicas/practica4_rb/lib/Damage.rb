@@ -16,6 +16,10 @@ module Deepspace
     def copy()
     end
 
+    def self.newCopy(otro)
+      otro.copy
+    end
+
     def discardWeapon(w) end
 
     def discardShieldBooster
