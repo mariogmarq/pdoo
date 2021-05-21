@@ -19,7 +19,7 @@ public class SpaceCity extends SpaceStation {
     SpaceCity(SpaceStation base, ArrayList<SpaceStation> rest){
         super(base);
         collaborators = rest;
-        collaborators.add(0, base);
+        //collaborators.add(0, base);
         this.base = base;
     }
     
@@ -47,11 +47,8 @@ public class SpaceCity extends SpaceStation {
     
     @Override
     public Transformation setLoot(Loot loot){
-        Transformation result = super.setLoot(loot);
-        if(result == Transformation.GETEFFICIENT)
-            return Transformation.NOTRANSFORM;
-        else
-            return result;
+        super.setLoot(loot);
+        return Transformation.NOTRANSFORM;
     }
 
 }

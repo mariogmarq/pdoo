@@ -33,6 +33,8 @@ public class Loot {
         this.nShields = nShields;
         this.nHangars = nHangars;
         this.nMedals = nMedals;
+        getEfficient = false;
+        spaceCity = false;
     }
     
     Loot(int nSupplies, int nWeapons, int nShields, int nHangars, int nMedals, boolean efficient, boolean city){
