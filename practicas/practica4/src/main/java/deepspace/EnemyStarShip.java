@@ -8,7 +8,7 @@ package deepspace;
 /**
  *
  */
-public class EnemyStarShip implements SpaceFighter{
+public class EnemyStarShip implements SpaceFighter, Copyable<EnemyStarShip>{
     private String name;
     private float ammoPower;
     private float shieldPower;
@@ -80,6 +80,11 @@ public class EnemyStarShip implements SpaceFighter{
     
     EnemyToUI getUIversion(){
         return new EnemyToUI(this);
+    }
+
+    @Override
+    public EnemyStarShip copy() {
+        return new EnemyStarShip(this);
     }
     
     

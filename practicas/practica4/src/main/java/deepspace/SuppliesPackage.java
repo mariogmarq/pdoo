@@ -8,7 +8,7 @@ package deepspace;
 /**
  * representa a un paquete de suministros para una estación espacial. Puede contenerarmamento, combustible y/o energía para los escudos
  */
-public class SuppliesPackage {
+public class SuppliesPackage implements Copyable<SuppliesPackage>{
    private float ammoPower;
    private float fuelUnits;
    private float shieldPower;
@@ -57,6 +57,11 @@ public class SuppliesPackage {
     @Override
     public String toString() {
         return "ammoPower: " + ammoPower + "\nfuelUnits: " + fuelUnits + "\nshieldPower: " + shieldPower;
+    }
+
+    @Override
+    public SuppliesPackage copy() {
+        return new SuppliesPackage(this);
     }
     
     

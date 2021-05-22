@@ -8,7 +8,7 @@ package deepspace;
 /**
  * representa a los potenciadores de escudo que pueden tener las estaciones espaciales.
  */
-public class ShieldBooster implements CombatElement {
+public class ShieldBooster implements CombatElement, Copyable<ShieldBooster> {
     private String name;
     private float boost;
     private int uses;
@@ -69,6 +69,11 @@ public class ShieldBooster implements CombatElement {
     @Override
     public String toString() {
         return "name: " + name + "\nboost: " + boost + "\nuses: " + uses;
+    }
+
+    @Override
+    public ShieldBooster copy() {
+        return new ShieldBooster(this);
     }
     
     

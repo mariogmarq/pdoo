@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Representa un hangar
  */
-public class Hangar {
+public class Hangar implements Copyable<Hangar>{
     private int maxElements;
     private ArrayList<Weapon> weapons;
     private ArrayList<ShieldBooster> shieldBoosters;
@@ -115,6 +115,11 @@ public class Hangar {
     @Override
     public String toString() {
         return "maxElements: " + getMaxElements() + "\nweapons: " + getWeapons().toString() + "\nshieldBoosters: " + getShieldBoosters().toString();
+    }
+
+    @Override
+    public Hangar copy() {
+        return new Hangar(this);
     }
     
     

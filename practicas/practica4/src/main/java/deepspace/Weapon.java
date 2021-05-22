@@ -8,7 +8,7 @@ package deepspace;
 /**
  * representa a las armas de las que puede disponer una estación espacial para potenciar suenergía al disparar.
  */
-public class Weapon implements CombatElement{
+public class Weapon implements CombatElement, Copyable<Weapon>{
     private String name;
     private WeaponType type;
     private int uses;
@@ -78,6 +78,11 @@ public class Weapon implements CombatElement{
     @Override
     public String toString() {
         return "name: " + name + "\ntype: " + type.toString() + "\nuses: " + uses;
+    }
+
+    @Override
+    public Weapon copy() {
+        return new Weapon(this);
     }
     
     
