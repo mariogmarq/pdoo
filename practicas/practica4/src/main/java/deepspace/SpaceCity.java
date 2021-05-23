@@ -50,5 +50,10 @@ public class SpaceCity extends SpaceStation {
         super.setLoot(loot);
         return Transformation.NOTRANSFORM;
     }
+    
+    @Override
+    public SpaceStationToUI getUIversion() {
+        return new SpaceCityToUI(this);
+    }
 
 }

@@ -35,4 +35,9 @@ public class PowerEfficientSpaceStation extends SpaceStation{
         return super.protection() * EFFICIENCYFACTOR;
     }
     
+    @Override
+    public SpaceStationToUI getUIversion() {
+        return new PowerEfficientSpaceStationToUI(this);
+    }
+    
 }
