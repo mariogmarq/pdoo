@@ -1,4 +1,6 @@
 #encoding: utf-8
+require_relative 'SpaceStation'
+require_relative 'PowerEfficientSpaceStationToUI'
 
 module Deepspace
   class PowerEfficientSpaceStation < SpaceStation
@@ -21,6 +23,10 @@ module Deepspace
       if res == Transformation::SPACECITY
         res = Transformation::NOTRANSFORM
       end
+    end
+
+    def getUIversion
+      PowerEfficientSpaceStationToUI.new self
     end
 
   end

@@ -9,6 +9,7 @@ require_relative 'Dice'
 require_relative 'CardDealer'
 require_relative 'SpaceStation'
 require_relative 'GameUniverseToUI'
+require_relative 'Transformation'
 
 module Deepspace
 
