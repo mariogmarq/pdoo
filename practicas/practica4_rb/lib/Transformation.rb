@@ -1,8 +1,8 @@
 #encoding: utf-8
 
 module Deepspace
-  class Transformation
-    NOTRANSFORM = :notransfor
+  module Transformation
+    NOTRANSFORM = :notransform
     GETEFFICIENT = :getefficient
     SPACECITY = :spacecity
   end
