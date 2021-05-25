@@ -21,7 +21,7 @@ module Deepspace
 
     def protection
       protection_power = 0
-      protection_power += @base.protection
+      protection_power += super
 
       @collaborators.each do |c|
         protection_power += c.protection
@@ -31,7 +31,7 @@ module Deepspace
 
     def fire
       fire_power = 0
-      fire_power += @base.fire
+      fire_power += super
 
       @collaborators.each do |c|
         fire_power += c.fire
