@@ -29,7 +29,7 @@ public class SpaceCity extends SpaceStation {
     
     @Override
     public float fire(){
-        float res = 0.0f;
+        float res = super.fire();
         for(SpaceStation i : collaborators){
             res += i.fire();
         }
@@ -38,7 +38,7 @@ public class SpaceCity extends SpaceStation {
     
     @Override
     public float protection(){
-        float res = 0.0f;
+        float res = super.protection();
         for(SpaceStation i : collaborators){
             res += i.protection();
         }
