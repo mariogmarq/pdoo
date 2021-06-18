@@ -7,6 +7,7 @@ package main;
 
 import View.DeepSpaceView;
 import View.UI.TextMainView;
+import View.GUI.MainWindow;
 import controller.Controller;
 import deepspace.GameUniverse;
 
@@ -18,7 +19,7 @@ public class PlayWithUI {
     public static void main(String[] args) {
       DeepSpaceView ui;
       GameUniverse game = new GameUniverse();
-      ui = TextMainView.getInstance();
+      ui = new MainWindow();
       Controller controller = Controller.getInstance();
       controller.setModelView(game,ui);
       controller.start();   
