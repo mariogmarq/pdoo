@@ -34,6 +34,7 @@ public class CurrentStation extends javax.swing.JPanel {
         for(WeaponToUI w: s.getWeapons()) {
             View.GUI.Weapon cmp = new Weapon();
             cmp.updateComponent(w);
+            cmp.setBorder(javax.swing.BorderFactory.createLineBorder(null));
             panelArmas.add(cmp);
         }
         
@@ -42,6 +43,7 @@ public class CurrentStation extends javax.swing.JPanel {
         for(ShieldToUI shield: s.getShieldBoosters()) {
             View.GUI.Shield cmp = new Shield();
             cmp.updateComponent(shield);
+            cmp.setBorder(javax.swing.BorderFactory.createLineBorder(null));
             panelEscudos.add(cmp);
         }
         
@@ -49,11 +51,13 @@ public class CurrentStation extends javax.swing.JPanel {
         for(WeaponToUI w: s.getHangar().getWeapons()){
             View.GUI.Weapon cmp = new Weapon();
             cmp.updateComponent(w);
+            cmp.setBorder(javax.swing.BorderFactory.createLineBorder(null));
             panelHangar.add(cmp);
         }
         for(ShieldToUI shield: s.getHangar().getShieldBoosters()){
             View.GUI.Shield cmp = new Shield();
             cmp.updateComponent(shield);
+            cmp.setBorder(javax.swing.BorderFactory.createLineBorder(null));
             panelHangar.add(cmp);
         }
         

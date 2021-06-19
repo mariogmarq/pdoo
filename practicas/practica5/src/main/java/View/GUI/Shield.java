@@ -28,6 +28,8 @@ public class Shield extends javax.swing.JPanel {
     public void updateComponent(ShieldToUI s) {
         valorPotencia.setText(Float.toString(s.getBoost()));
         valorUsos.setText(Integer.toString(s.getUses()));
+        selected = false;
+        setOpaque(selected);
         
         revalidate();
         repaint();

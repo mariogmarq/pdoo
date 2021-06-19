@@ -24,6 +24,8 @@ public class Weapon extends javax.swing.JPanel {
         valorPotencia.setText(Float.toString(w.getPower()));
         valorUsos.setText(Integer.toString(w.getUses()));
         valorTipo.setText(w.getType().toString());
+        selected = false;
+        setOpaque(selected);
         
         revalidate();
         repaint();
