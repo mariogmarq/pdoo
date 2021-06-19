@@ -77,7 +77,6 @@ public class Controller {
                 break;
             case STATIONWINS:
                 view.wonCombatMessage();
-                view.conversionMessage();
                 haveWinner();
                 break;
             case STATIONWINSANDCONVERTS:
