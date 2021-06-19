@@ -50,7 +50,7 @@ public class Enemy extends javax.swing.JPanel {
 
         valorDefensa.setText("defensa");
 
-        damage.setBorder(javax.swing.BorderFactory.createTitledBorder("Castigo\n"));
+        damage.setBorder(javax.swing.BorderFactory.createTitledBorder("Castigo"));
         damage.setToolTipText("Castigo");
         damage.setName("Damage"); // NOI18N
 
@@ -95,9 +95,9 @@ public class Enemy extends javax.swing.JPanel {
                     .addComponent(etiquetaDefensa)
                     .addComponent(valorDefensa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(damage, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(loot, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(damage, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(loot, javax.swing.GroupLayout.PREFERRED_SIZE, 157, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

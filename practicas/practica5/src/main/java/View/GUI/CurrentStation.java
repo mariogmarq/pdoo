@@ -45,6 +45,19 @@ public class CurrentStation extends javax.swing.JPanel {
             panelEscudos.add(cmp);
         }
         
+        panelHangar.removeAll();
+        for(WeaponToUI w: s.getHangar().getWeapons()){
+            View.GUI.Weapon cmp = new Weapon();
+            cmp.updateComponent(w);
+            panelHangar.add(cmp);
+        }
+        for(ShieldToUI shield: s.getHangar().getShieldBoosters()){
+            View.GUI.Shield cmp = new Shield();
+            cmp.updateComponent(shield);
+            panelHangar.add(cmp);
+        }
+        
+        
         revalidate();
         repaint();
     }
@@ -61,12 +74,15 @@ public class CurrentStation extends javax.swing.JPanel {
         damage = new View.GUI.Damage();
         panelArmas = new javax.swing.JPanel();
         panelEscudos = new javax.swing.JPanel();
+        panelHangar = new javax.swing.JPanel();
 
         damage.setBorder(javax.swing.BorderFactory.createTitledBorder("Castigo pendiente\n"));
 
         panelArmas.setBorder(javax.swing.BorderFactory.createTitledBorder("Armas"));
 
         panelEscudos.setBorder(javax.swing.BorderFactory.createTitledBorder("Escudos"));
+
+        panelHangar.setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -80,9 +96,10 @@ public class CurrentStation extends javax.swing.JPanel {
                         .addComponent(damage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(panelEscudos, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(panelArmas, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 269, Short.MAX_VALUE)))
+                        .addGap(0, 279, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -94,8 +111,12 @@ public class CurrentStation extends javax.swing.JPanel {
                 .addComponent(panelArmas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEscudos, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(panelHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
+
+        panelHangar.getAccessibleContext().setAccessibleName("Hangar");
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -103,5 +124,6 @@ public class CurrentStation extends javax.swing.JPanel {
     private View.GUI.Damage damage;
     private javax.swing.JPanel panelArmas;
     private javax.swing.JPanel panelEscudos;
+    private javax.swing.JPanel panelHangar;
     // End of variables declaration//GEN-END:variables
 }

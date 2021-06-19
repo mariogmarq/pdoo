@@ -76,9 +76,9 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
             }
         });
 
-        enemy.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        enemy.setBorder(javax.swing.BorderFactory.createLineBorder(null));
 
-        currentStation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        currentStation.setBorder(javax.swing.BorderFactory.createLineBorder(null));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
