@@ -32,6 +32,8 @@
                       <Component id="botonDescartar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="botonDescartarHangar" min="-2" pref="162" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="botonDescargarEnHangar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="currentStation" min="-2" pref="628" max="-2" attributes="0"/>
               </Group>
@@ -70,6 +72,7 @@
                   <Component id="botonEquipar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonDescartar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonDescartarHangar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonDescargarEnHangar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -136,6 +139,14 @@
           </Border>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonDescargarEnHangar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descartar en Hangar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDescargarEnHangarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

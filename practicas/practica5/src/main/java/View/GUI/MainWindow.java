@@ -41,6 +41,7 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
         botonDescartarHangar = new javax.swing.JButton();
         enemy = new View.GUI.Enemy();
         currentStation = new View.GUI.CurrentStation();
+        botonDescargarEnHangar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,9 +77,16 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
             }
         });
 
-        enemy.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        enemy.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        currentStation.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        currentStation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        botonDescargarEnHangar.setText("Descartar en Hangar");
+        botonDescargarEnHangar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDescargarEnHangarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,7 +100,9 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
                         .addGap(18, 18, 18)
                         .addComponent(botonDescartar)
                         .addGap(18, 18, 18)
-                        .addComponent(botonDescartarHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(botonDescartarHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(botonDescargarEnHangar))
                     .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,14 +124,15 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
                         .addComponent(enemy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonCombatir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(currentStation, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE))
+                    .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, 539, Short.MAX_VALUE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonSalir)
                     .addComponent(BotonTurno)
                     .addComponent(botonEquipar)
                     .addComponent(botonDescartar)
-                    .addComponent(botonDescartarHangar))
+                    .addComponent(botonDescartarHangar)
+                    .addComponent(botonDescargarEnHangar))
                 .addContainerGap())
         );
 
@@ -143,6 +154,10 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
     private void botonDescartarHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDescartarHangarActionPerformed
         Controller.getInstance().discardHangar();
     }//GEN-LAST:event_botonDescartarHangarActionPerformed
+
+    private void botonDescargarEnHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDescargarEnHangarActionPerformed
+        
+    }//GEN-LAST:event_botonDescargarEnHangarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,6 +259,7 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonTurno;
     private javax.swing.JButton botonCombatir;
+    private javax.swing.JButton botonDescargarEnHangar;
     private javax.swing.JButton botonDescartar;
     private javax.swing.JButton botonDescartarHangar;
     private javax.swing.JButton botonEquipar;
