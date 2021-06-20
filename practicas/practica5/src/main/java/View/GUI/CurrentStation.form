@@ -16,20 +16,59 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="damage" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="panelArmas" min="-2" pref="449" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="damage" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="panelHangar" min="-2" pref="449" max="-2" attributes="0"/>
+                                  <Component id="panelEscudos" min="-2" pref="449" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="etiquetaAtaque" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="etiquetaDefensa" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="etiquetaCombustible" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="etiquetaMedallas" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="valorCombustible" min="-2" max="-2" attributes="0"/>
+                                          <Component id="valorDefensa" min="-2" max="-2" attributes="0"/>
+                                          <Component id="valorAtaque" min="-2" max="-2" attributes="0"/>
+                                          <Component id="valorMedallas" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelHangar" min="-2" pref="449" max="-2" attributes="0"/>
-                          <Component id="panelEscudos" min="-2" pref="449" max="-2" attributes="0"/>
-                          <Component id="panelArmas" min="-2" pref="449" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+                              <Component id="nombreJugador" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="botonEquipar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="botonDescartarMontados" min="-2" pref="173" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="botonDescartarEnHangar" min="-2" pref="163" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="botonDescartarHangar" min="-2" pref="143" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -39,15 +78,50 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="nombreJugador" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="damage" min="-2" pref="87" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="etiquetaAtaque" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="valorAtaque" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelArmas" min="-2" pref="100" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="etiquetaDefensa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="valorDefensa" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="etiquetaCombustible" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="valorCombustible" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="etiquetaMedallas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="valorMedallas" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="damage" min="-2" pref="87" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                      <Component id="panelArmas" min="-2" pref="100" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="panelEscudos" min="-2" pref="107" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="panelHangar" min="-2" pref="224" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <Component id="panelHangar" min="-2" pref="189" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonEquipar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonDescartarMontados" alignment="3" max="32767" attributes="0"/>
+                  <Component id="botonDescartarEnHangar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonDescartarHangar" alignment="3" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -92,11 +166,85 @@
           </Border>
         </Property>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Hangar"/>
-      </AccessibilityProperties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>
+    <Component class="javax.swing.JButton" name="botonEquipar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Equipar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEquiparActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonDescartarMontados">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descartar Montados"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDescartarMontadosActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonDescartarEnHangar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descartar en Hangar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDescartarEnHangarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonDescartarHangar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descartar Hangar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDescartarHangarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nombreJugador">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="valorNombre"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="etiquetaAtaque">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Potencia de Ataque: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="etiquetaDefensa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Potencia de Defensa: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="etiquetaCombustible">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nivel de Combustible: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="etiquetaMedallas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Medallas: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="valorAtaque">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="valorDefensa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="valorCombustible">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="valorMedallas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

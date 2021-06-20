@@ -12,7 +12,7 @@ import deepspace.WeaponToUI;
  *
  * @author mario
  */
-public class Shield extends javax.swing.JPanel {
+public class Shield extends javax.swing.JPanel implements Selectable {
     private boolean selected = false;
     /**
      * Creates new form Weapon

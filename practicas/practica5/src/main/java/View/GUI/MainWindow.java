@@ -36,12 +36,8 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
         botonSalir = new javax.swing.JButton();
         BotonTurno = new javax.swing.JButton();
         botonCombatir = new javax.swing.JButton();
-        botonEquipar = new javax.swing.JButton();
-        botonDescartar = new javax.swing.JButton();
-        botonDescartarHangar = new javax.swing.JButton();
         enemy = new View.GUI.Enemy();
         currentStation = new View.GUI.CurrentStation();
-        botonDescargarEnHangar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,27 +62,9 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
             }
         });
 
-        botonEquipar.setText("Equipar");
-
-        botonDescartar.setText("Descartar");
-
-        botonDescartarHangar.setText("Descartar Hangar");
-        botonDescartarHangar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonDescartarHangarActionPerformed(evt);
-            }
-        });
-
         enemy.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         currentStation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        botonDescargarEnHangar.setText("Descartar en Hangar");
-        botonDescargarEnHangar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonDescargarEnHangarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,46 +72,34 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(currentStation, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonEquipar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonDescartar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonDescartarHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(botonDescargarEnHangar))
-                    .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(botonCombatir, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(BotonTurno)
-                            .addGap(139, 139, 139)
-                            .addComponent(botonSalir)))
-                    .addComponent(enemy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BotonTurno)
+                        .addGap(125, 125, 125)
+                        .addComponent(botonSalir))
+                    .addComponent(botonCombatir, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enemy, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(currentStation, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(enemy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonCombatir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, 539, Short.MAX_VALUE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonSalir)
-                    .addComponent(BotonTurno)
-                    .addComponent(botonEquipar)
-                    .addComponent(botonDescartar)
-                    .addComponent(botonDescartarHangar)
-                    .addComponent(botonDescargarEnHangar))
-                .addContainerGap())
+                        .addGap(49, 49, 49)
+                        .addComponent(botonCombatir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BotonTurno)
+                            .addComponent(botonSalir))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -145,19 +111,13 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
 
     private void BotonTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTurnoActionPerformed
         Controller.getInstance().nextTurn();
+        updateView();
     }//GEN-LAST:event_BotonTurnoActionPerformed
 
     private void botonCombatirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCombatirActionPerformed
         Controller.getInstance().combat();
+        updateView();
     }//GEN-LAST:event_botonCombatirActionPerformed
-
-    private void botonDescartarHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDescartarHangarActionPerformed
-        Controller.getInstance().discardHangar();
-    }//GEN-LAST:event_botonDescartarHangarActionPerformed
-
-    private void botonDescargarEnHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDescargarEnHangarActionPerformed
-        
-    }//GEN-LAST:event_botonDescargarEnHangarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,10 +219,6 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonTurno;
     private javax.swing.JButton botonCombatir;
-    private javax.swing.JButton botonDescargarEnHangar;
-    private javax.swing.JButton botonDescartar;
-    private javax.swing.JButton botonDescartarHangar;
-    private javax.swing.JButton botonEquipar;
     private javax.swing.JButton botonSalir;
     private View.GUI.CurrentStation currentStation;
     private View.GUI.Enemy enemy;
