@@ -6,6 +6,7 @@
 package View.GUI;
 
 import controller.Controller;
+import deepspace.GameState;
 import deepspace.ShieldToUI;
 import deepspace.SpaceStationToUI;
 import deepspace.WeaponToUI;
@@ -64,6 +65,11 @@ public class CurrentStation extends javax.swing.JPanel {
     
     
     public void updateComponent(SpaceStationToUI s) {
+        //Update botons
+        botonDescartarEnHangar.setEnabled(Controller.getInstance().getState()==GameState.INIT||Controller.getInstance().getState()==GameState.AFTERCOMBAT);
+        botonDescartarHangar.setEnabled(Controller.getInstance().getState()==GameState.INIT||Controller.getInstance().getState()==GameState.AFTERCOMBAT);
+        botonDescartarMontados.setEnabled(Controller.getInstance().getState()==GameState.INIT||Controller.getInstance().getState()==GameState.AFTERCOMBAT);
+        botonEquipar.setEnabled(Controller.getInstance().getState()==GameState.INIT||Controller.getInstance().getState()==GameState.AFTERCOMBAT);
         
         nombreJugador.setText(s.getName());
         valorAtaque.setText(Float.toString(s.getAmmoPower()));

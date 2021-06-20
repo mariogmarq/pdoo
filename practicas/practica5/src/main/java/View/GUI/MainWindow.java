@@ -8,6 +8,7 @@ package View.GUI;
 import View.DeepSpaceView;
 import java.util.ArrayList;
 import controller.Controller;
+import deepspace.GameState;
 import deepspace.GameUniverseToUI;
 import javax.swing.JOptionPane;
 
@@ -156,6 +157,9 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
 
     @Override
     public void updateView() {
+        botonCombatir.setEnabled(Controller.getInstance().getState()==GameState.INIT || Controller.getInstance().getState()==GameState.BEFORECOMBAT);
+        BotonTurno.setEnabled(Controller.getInstance().getState()==GameState.AFTERCOMBAT);
+        
         GameUniverseToUI ui = Controller.getInstance().getUIversion();
         enemy.updateComponent(ui.getCurrentEnemy());
         currentStation.updateComponent(ui.getCurrentStation());
