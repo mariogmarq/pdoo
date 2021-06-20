@@ -65,7 +65,7 @@ public class EnemyStarShip implements SpaceFighter, Copyable<EnemyStarShip>{
     }
 
     public Loot getLoot() {
-        return new Loot(loot.getNSupplies(), loot.getNWeapons(), loot.getNShields(), loot.getNHangars(), loot.getNMedals());
+        return new Loot(loot.getNSupplies(), loot.getNWeapons(), loot.getNShields(), loot.getNHangars(), loot.getNMedals(), loot.getEfficient(), loot.spaceCity());
     }
 
     public String getName() {

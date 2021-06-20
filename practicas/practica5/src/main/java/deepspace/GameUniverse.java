@@ -130,6 +130,7 @@ public class GameUniverse {
             currentStation = spaceStations.get(currentStationIndex);
             currentEnemy = dealer.nextEnemy();
             gameState.next(turns, spaceStations.size());
+            haveSpaceCity = false;
         }
     }
     
