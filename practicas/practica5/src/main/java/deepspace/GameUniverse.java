@@ -33,8 +33,7 @@ public class GameUniverse {
     }
     
     private void updateCurrentStation() {
-       SpaceStation oldreference = spaceStations.get(currentStationIndex);
-       oldreference = currentStation;
+       spaceStations.set(currentStationIndex, currentStation);
     }
     
    private void makeStationEfficient() {
