@@ -19,7 +19,7 @@ public enum WeaponType {
         this.power = power;
     }
     
-    float getPower() {
+    public float getPower() {
         return this.power;
     }
 }

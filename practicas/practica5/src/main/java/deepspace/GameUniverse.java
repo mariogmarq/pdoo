@@ -218,6 +218,8 @@ public class GameUniverse {
     }
     
     
-    
+    public EnemyToUI dameUnEnemy() {
+        return CardDealer.getInstance().nextEnemy().getUIversion();
+    }
     
 }
